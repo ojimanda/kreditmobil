@@ -5,6 +5,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <ImageView
+        android:id="@+id/imageView29"
+        android:layout_width="757dp"
+        android:layout_height="334dp"
+        app:srcCompat="@drawable/ellipse_20"
+        tools:layout_editor_absoluteX="-173dp"
+        tools:layout_editor_absoluteY="-122dp" />
+
     <ImageButton
         android:id="@+id/imageButton2"
         android:layout_width="39dp"
@@ -32,7 +40,7 @@
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:fontFamily="sans-serif-medium"
+        android:fontFamily="sans-serif-black"
         android:text="History"
         android:textColor="#FFFFFF"
         android:textSize="34sp"
@@ -65,21 +73,21 @@
         app:layout_constraintVertical_bias="0.026"
         app:srcCompat="@drawable/hourglass" />
 
+
     <TextView
         android:id="@+id/textView9"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:fontFamily="sans-serif-medium"
+        android:fontFamily="sans-serif-black"
         android:text="History View Calculation"
-        android:textColor="#000000"
+        android:textColor="#FFFFFF"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.224" />
-
+        app:layout_constraintVertical_bias="0.21" />
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView"

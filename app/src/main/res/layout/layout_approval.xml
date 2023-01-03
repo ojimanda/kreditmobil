@@ -85,6 +85,6 @@
         android:layout_marginBottom="103dp"
         android:fontFamily="sans-serif-black"
         android:text="APPROVE"
-        android:textColor="#76FF03" />
+        android:textColor="#1CD645" />
 
 </RelativeLayout>

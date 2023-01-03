@@ -22,7 +22,7 @@
         android:id="@+id/textViewHeaderTmbMob"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:fontFamily="sans-serif-medium"
+        android:fontFamily="sans-serif-black"
         android:text="Data Pengajuan dan Spesifikasi Mobil"
         android:textColor="#000000"
         android:textSize="20sp"
@@ -63,17 +63,17 @@
         android:id="@+id/textViewTmbMobHarga"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:fontFamily="sans-serif-medium"
+        android:fontFamily="sans-serif-black"
         android:text="Harga"
         android:textColor="#000000"
         android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.072"
+        app:layout_constraintHorizontal_bias="0.089"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.448" />
-
+        app:layout_constraintVertical_bias="0.531" />
+        
     <Spinner
         android:id="@+id/spinnerTmbMobBrand"
         android:layout_width="224dp"
@@ -85,8 +85,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.333" />
-
-    <TextView
+        
+     <TextView
         android:id="@+id/textViewTmbMobJenis"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -158,7 +158,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.027"
         app:srcCompat="@drawable/plus" />
-
+        
     <EditText
         android:id="@+id/editTextTmbMobHarga"
         android:layout_width="224dp"

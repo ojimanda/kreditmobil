@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Container GRAY rectangle -->
+    <item>
+        <shape android:shape="rectangle">
+
+            <size
+                android:width="550dp"
+                android:height="750dp" />
+
+            <solid
+                android:color="@color/white" />
+        </shape>
+    </item>
+
+    <!-- Top WHITE oval shape -->
+    <item
+        android:bottom="450dp"
+        >
+        <bitmap
+            android:src="@drawable/ellipse_20"
+            />
+    </item>
+</layer-list>
