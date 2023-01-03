@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/dialog_bg">
+
+    <ImageView
+        android:id="@+id/emoji"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_marginStart="8dp"
+        android:src="@drawable/ic_sad_emoji"></ImageView>
+    
+    <TextView
+        android:id="@+id/tv"
+        android:layout_below="@+id/emoji"
+        android:layout_marginTop="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="90dp"
+        android:layout_alignParentStart="true"
+        android:text="Exit App ?"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="35sp"
+        android:textStyle="bold"></TextView>
+    
+    <ImageButton
+        android:id="@+id/btnNo"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_below="@+id/tv"
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="50dp"
+        android:layout_marginBottom="20dp"
+        android:background="@drawable/no_btn_bg"
+        android:src="@drawable/ic_no"></ImageButton>
+
+    <ImageButton
+        android:id="@+id/btnYes"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_below="@+id/tv"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="50dp"
+        android:layout_marginStart="200dp"
+        android:background="@drawable/no_btn_bg"
+        android:src="@drawable/ic_no"></ImageButton>
+
+</RelativeLayout>
