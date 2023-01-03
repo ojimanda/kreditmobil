@@ -48,7 +48,7 @@
             android:layout_gravity="center">
 
             <EditText
-                android:id="@+id/editText"
+                android:id="@+id/etEmail"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
@@ -75,13 +75,14 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/editText"
+                app:layout_constraintTop_toBottomOf="@+id/etEmail"
                 tools:ignore="TouchTargetSizeCheck" />
 
             <Button
                 android:layout_width="100dp"
                 android:layout_height="wrap_content"
                 android:backgroundTint="@color/main"
+                android:id="@+id/btLogin"
                 android:text="Login"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -114,6 +115,7 @@
             android:fontFamily="sans-serif-medium"
             android:gravity="center"
             android:text="REGISTER"
+            android:id="@+id/txRegister"
             android:textColor="@color/white"
             android:textSize="35sp" />
 
