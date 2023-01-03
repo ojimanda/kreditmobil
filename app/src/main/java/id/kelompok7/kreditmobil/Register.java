@@ -17,7 +17,6 @@ import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.storage.FirebaseStorage;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -92,6 +91,7 @@ public class Register extends AppCompatActivity {
         user.put("nama", nama);
         user.put("email", email);
         user.put("password", password);
+        user.put("role", "customer");
 
         progressDialog.show();
         db.collection("users")
