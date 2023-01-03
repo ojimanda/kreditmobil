@@ -6,32 +6,41 @@
     android:layout_height="match_parent">
 
     <ImageView
+        android:id="@+id/imageView33"
+        android:layout_width="757dp"
+        android:layout_height="334dp"
+        android:layout_marginBottom="508dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:srcCompat="@drawable/ellipse_20"
+        tools:layout_editor_absoluteX="-173dp" />
+
+    <ImageView
         android:id="@+id/imageView2"
         android:layout_width="135dp"
         android:layout_height="125dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.048"
+        app:layout_constraintVertical_bias="0.026"
         app:srcCompat="@drawable/cardealer" />
 
     <TextView
         android:id="@+id/textView3"
         android:layout_width="307dp"
         android:layout_height="47dp"
-        android:fontFamily="sans-serif-condensed-medium"
+        android:fontFamily="sans-serif-black"
+        android:gravity="center_horizontal"
         android:text="Data Pengajuan dan Spesifikasi Mobil"
         android:textAlignment="gravity"
-        android:textColor="#000000"
-        android:textSize="20sp"
+        android:textColor="#FFFFFF"
+        android:textSize="19sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.528"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.25" />
+        app:layout_constraintVertical_bias="0.22" />
 
     <Spinner
         android:id="@+id/spinner"
@@ -50,6 +59,7 @@
         android:layout_width="100dp"
         android:layout_height="48dp"
         android:backgroundTint="#00B2FF"
+        android:fontFamily="sans-serif-black"
         android:text="Hitung"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -62,7 +72,7 @@
         android:id="@+id/textView4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:fontFamily="sans-serif-medium"
+        android:fontFamily="sans-serif-black"
         android:text="Brand Mobil"
         android:textColor="#000000"
         android:textSize="16sp"
@@ -113,7 +123,7 @@
         android:id="@+id/textView6"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:fontFamily="sans-serif-medium"
+        android:fontFamily="sans-serif-black"
         android:text="Uang Muka"
         android:textColor="#000000"
         android:textSize="16sp"
@@ -128,7 +138,7 @@
         android:id="@+id/textView7"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:fontFamily="sans-serif-medium"
+        android:fontFamily="sans-serif-black"
         android:text="Tenor"
         android:textColor="#000000"
         android:textSize="16sp"
@@ -143,7 +153,7 @@
         android:id="@+id/textView5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:fontFamily="sans-serif-medium"
+        android:fontFamily="sans-serif-black"
         android:text="Jenis Mobil"
         android:textColor="#000000"
         android:textSize="16sp"
@@ -168,7 +178,7 @@
         android:id="@+id/textView8"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:fontFamily="sans-serif-medium"
+        android:fontFamily="sans-serif-black"
         android:text="Review"
         android:textColor="#FFFFFF"
         android:textSize="34sp"
@@ -197,10 +207,10 @@
         android:background="@drawable/border_input"
         app:layout_constraintBottom_toBottomOf="@+id/imageView4"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.461"
+        app:layout_constraintHorizontal_bias="0.422"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.799" />
+        app:layout_constraintVertical_bias="0.804" />
 
     <ImageButton
         android:id="@+id/imageButton"

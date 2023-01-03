@@ -55,10 +55,12 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="32dp"
                 android:background="@drawable/border_input"
+                android:fontFamily="sans-serif-black"
                 android:gravity="center"
                 android:hint="Nama"
                 android:inputType="textPersonName"
                 android:padding="6dp"
+                android:textColor="#000000"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
@@ -71,24 +73,28 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="24dp"
                 android:background="@drawable/border_input"
+                android:fontFamily="sans-serif-black"
                 android:gravity="center"
                 android:hint="Email"
                 android:inputType="textEmailAddress"
                 android:padding="6dp"
+                android:textColor="#000000"
                 app:layout_constraintTop_toBottomOf="@+id/txNama"
                 tools:ignore="TouchTargetSizeCheck"
                 tools:layout_editor_absoluteX="0dp" />
 
             <EditText
+                android:id="@+id/txPassword"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="24dp"
-                android:id="@+id/txPassword"
                 android:background="@drawable/border_input"
+                android:fontFamily="sans-serif-black"
                 android:gravity="center"
                 android:hint="Password"
                 android:inputType="textPassword"
                 android:padding="6dp"
+                android:textColor="#000000"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
@@ -96,10 +102,11 @@
                 tools:ignore="TouchTargetSizeCheck" />
 
             <Button
+                android:id="@+id/btRegister"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:backgroundTint="@color/main"
-                android:id="@+id/btRegister"
+                android:fontFamily="sans-serif-black"
                 android:text="Register"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -127,11 +134,11 @@
         app:layout_constraintVertical_bias="0.5">
 
         <TextView
+            android:id="@+id/txLogin"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:fontFamily="sans-serif-condensed-medium"
+            android:fontFamily="sans-serif-black"
             android:gravity="center"
-            android:id="@+id/txLogin"
             android:text="LOGIN"
             android:textColor="@color/white"
             android:textSize="35sp" />
