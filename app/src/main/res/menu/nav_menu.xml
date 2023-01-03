@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+
+        <item
+            android:id="@+id/nav_pengajuan"
+            android:title="Pengajuan KPM"
+            android:icon="@drawable/icon_pengajuan"
+            />
+
+        <item
+            android:id="@+id/nav_review"
+            android:title="Review"
+            android:icon="@drawable/icon_review"/>
+
+
+    </group>
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_history"
+            android:title="History"
+            android:icon="@drawable/icon_history"/>
+    </group>
+
+</menu>

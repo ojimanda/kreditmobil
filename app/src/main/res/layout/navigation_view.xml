@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.navigation.NavigationView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:menu="@menu/nav_menu"
+    app:headerLayout="@layout/navigation_header"
+    app:itemTextColor="@color/white"
+    android:backgroundTint="@color/main"
+    app:itemIconTint="@color/white"
+    android:theme="@style/nav_style"
+    app:itemIconPadding="30dp"
+    app:itemIconSize="30dp"
+    app:itemVerticalPadding="20dp"
+    android:layout_gravity="start"
+    >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_margin="10dp"
+        android:orientation="horizontal"
+        android:layout_gravity="bottom"
+        android:background="@drawable/bg_logout"
+        >
+
+        <ImageView
+            android:layout_width="50dp"
+            android:layout_height="match_parent"
+            android:src="@drawable/icon_logout"
+            android:padding="8dp"/>
+
+        <TextView
+            android:id="@+id/textView16"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:layout_marginStart="10dp"
+            android:layout_weight="1"
+            android:textColor="@color/main"
+            android:fontFamily="sans-serif-black"
+            android:text="Log Out" />
+
+
+    </LinearLayout>
+
+</com.google.android.material.navigation.NavigationView>

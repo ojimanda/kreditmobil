@@ -3,13 +3,9 @@ package id.kelompok7.kreditmobil;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Message;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -19,7 +15,6 @@ import android.widget.Toast;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.Task;
-import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QuerySnapshot;
 
@@ -81,7 +76,7 @@ public class Login extends AppCompatActivity {
                                     if(task.isSuccessful()) {
                                         Toast.makeText(Login.this, "Login berhasil", Toast.LENGTH_SHORT).show();
                                         progressDialog.dismiss();
-                                        Intent intent = new Intent(Login.this, MainActivity.class);
+                                        Intent intent = new Intent(Login.this, UserDashboard.class);
                                         intent.putExtra("email", getEmail);
                                         startActivity(intent);
                                         finish();
