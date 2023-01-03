@@ -6,15 +6,23 @@
     android:layout_height="match_parent">
 
     <ImageView
-        android:id="@+id/imageView7"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="388dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:id="@+id/imageView30"
+        android:layout_width="411dp"
+        android:layout_height="157dp"
+        android:layout_marginTop="664dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@drawable/ellipse_20" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/subtract__1_" />
+
+    <ImageView
+        android:id="@+id/imageView7"
+        android:layout_width="757dp"
+        android:layout_height="334dp"
+        android:layout_marginBottom="472dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:srcCompat="@drawable/ellipse_20"
+        tools:layout_editor_absoluteX="-172dp" />
 
     <ImageView
         android:id="@+id/imageView8"
@@ -32,16 +40,15 @@
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:fontFamily="sans-serif-condensed-medium"
+        android:fontFamily="sans-serif-black"
         android:text="Form Pengajuan Kredit Mobil"
         android:textColor="#FFFFFF"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.503"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.3" />
+        app:layout_constraintVertical_bias="0.259" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout"
@@ -50,10 +57,9 @@
         android:layout_gravity="center"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.508"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.79">
+        app:layout_constraintVertical_bias="0.7">
 
         <EditText
             android:id="@+id/editTextTextPassword"
@@ -61,10 +67,12 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="136dp"
             android:background="@drawable/border_input"
+            android:fontFamily="sans-serif-black"
             android:gravity="center"
             android:hint="Gaji"
             android:inputType="textPassword"
             android:padding="6dp"
+            android:textColor="#000000"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
@@ -77,10 +85,12 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:background="@drawable/border_input"
+            android:fontFamily="sans-serif-black"
             android:gravity="center"
             android:hint="Nik"
             android:inputType="textEmailAddress"
             android:padding="6dp"
+            android:textColor="#000000"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
@@ -93,10 +103,12 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="76dp"
             android:background="@drawable/border_input"
+            android:fontFamily="sans-serif-black"
             android:gravity="center"
             android:hint="Nama"
             android:inputType="textEmailAddress"
             android:padding="6dp"
+            android:textColor="#000000"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
@@ -108,10 +120,12 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="80dp"
             android:background="@drawable/border_input"
+            android:fontFamily="sans-serif-black"
             android:gravity="center"
             android:hint="Nomor Pokok Wajib Pajak"
             android:inputType="textPassword"
             android:padding="6dp"
+            android:textColor="#000000"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
@@ -122,6 +136,7 @@
             android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:backgroundTint="@color/main"
+            android:fontFamily="sans-serif-black"
             android:text="Daftar"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

@@ -53,6 +53,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:background="@drawable/border_input"
+                android:fontFamily="sans-serif-black"
                 android:gravity="center"
                 android:hint="Email"
                 android:inputType="textEmailAddress"
@@ -64,11 +65,12 @@
                 tools:ignore="TouchTargetSizeCheck" />
 
             <EditText
+                android:id="@+id/etPassword"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="28dp"
-                android:id="@+id/etPassword"
                 android:background="@drawable/border_input"
+                android:fontFamily="sans-serif-black"
                 android:gravity="center"
                 android:hint="Password"
                 android:inputType="textPassword"
@@ -111,12 +113,12 @@
         app:layout_constraintVertical_bias="0.5">
 
         <TextView
+            android:id="@+id/txRegister"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:fontFamily="sans-serif-medium"
+            android:fontFamily="sans-serif-black"
             android:gravity="center"
             android:text="REGISTER"
-            android:id="@+id/txRegister"
             android:textColor="@color/white"
             android:textSize="35sp" />
 
