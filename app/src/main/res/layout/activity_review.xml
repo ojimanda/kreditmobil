@@ -6,16 +6,7 @@
     android:layout_height="match_parent">
 
     <ImageView
-        android:id="@+id/imageView33"
-        android:layout_width="757dp"
-        android:layout_height="334dp"
-        android:layout_marginBottom="508dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:srcCompat="@drawable/ellipse_20"
-        tools:layout_editor_absoluteX="-173dp" />
-
-    <ImageView
-        android:id="@+id/imageView2"
+        android:id="@+id/imageViewHeaderReview"
         android:layout_width="135dp"
         android:layout_height="125dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -165,7 +156,7 @@
         app:layout_constraintVertical_bias="0.392" />
 
     <ImageView
-        android:id="@+id/imageView3"
+        android:id="@+id/imageViewFooterReview"
         android:layout_width="579dp"
         android:layout_height="168dp"
         android:layout_marginTop="624dp"

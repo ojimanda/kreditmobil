@@ -15,8 +15,12 @@ import android.widget.Toast;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
+
+import java.util.Map;
 
 public class Login extends AppCompatActivity {
 
@@ -24,6 +28,7 @@ public class Login extends AppCompatActivity {
     Button btLogin;
     TextView txRegister;
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
+    private QuerySnapshot result;
     private ProgressDialog progressDialog;
 
 
@@ -60,9 +65,6 @@ public class Login extends AppCompatActivity {
                     txEmail.setError("Masukkan email anda");
                 } else if(getPassword.equals("")){
                     txPassword.setError("Masukkan password anda");
-                } else if(getEmail.equals("admin") && getPassword.equals("admin")) {
-                    startActivity(new Intent(Login.this, AdminDashboard.class));
-                    finish();
                 }
                 else {
                     progressDialog.show();
@@ -74,12 +76,28 @@ public class Login extends AppCompatActivity {
                                 @Override
                                 public void onComplete(@NonNull Task<QuerySnapshot> task) {
                                     if(task.isSuccessful()) {
-                                        Toast.makeText(Login.this, "Login berhasil", Toast.LENGTH_SHORT).show();
-                                        progressDialog.dismiss();
-                                        Intent intent = new Intent(Login.this, UserDashboard.class);
-                                        intent.putExtra("email", getEmail);
-                                        startActivity(intent);
-                                        finish();
+                                        result = task.getResult();
+                                        DocumentSnapshot document = result.getDocuments().get(0);
+                                        String uid = document.getId();
+                                        String username = document.get("nama").toString();
+                                        String role = document.get("role").toString();
+                                        if(role.equals("admin")){
+                                            Toast.makeText(Login.this, "Login berhasil", Toast.LENGTH_SHORT).show();
+                                            progressDialog.dismiss();
+                                            Intent intent = new Intent(Login.this, AdminDashboard.class);
+                                            intent.putExtra("username",username);
+                                            startActivity(intent);
+                                            finish();
+                                        }
+                                        else{
+
+                                            Toast.makeText(Login.this, "Login berhasil", Toast.LENGTH_SHORT).show();
+                                            progressDialog.dismiss();
+                                            Intent intent1 = new Intent(Login.this, UserDashboard.class);
+                                            intent1.putExtra("uid", uid);
+                                            startActivity(intent1);
+                                            finish();
+                                        }
                                     }
                                 }
                             }).addOnFailureListener(new OnFailureListener() {
