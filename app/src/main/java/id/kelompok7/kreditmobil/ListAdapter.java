@@ -66,10 +66,13 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
         }
 
         void bindData(final ListElement item) {
+            String showBrand = item.getBrand().substring(0,1).toUpperCase() + item.getBrand().substring(1).toLowerCase();
+            String showMerk = item.getMerk().substring(0,1).toUpperCase() + item.getMerk().substring(1).toLowerCase();
+            String showTipe = item.getTipe().substring(0,1).toUpperCase() + item.getTipe().substring(1).toLowerCase();
             Picasso.get().load(item.getImage()).into(iconImage);
-            brand.setText(item.getBrand());
-            merk.setText(item.getMerk());
-            tipe.setText(item.getTipe());
+            brand.setText(showBrand);
+            merk.setText(showMerk);
+            tipe.setText(showTipe);
             harga.setText(item.getHarga());
         }
     }

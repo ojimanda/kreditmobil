@@ -22,13 +22,11 @@
             android:title="Review"
             android:icon="@drawable/icon_review"/>
 
-
-    </group>
-    <group android:checkableBehavior="single">
         <item
             android:id="@+id/nav_history"
             android:title="History"
             android:icon="@drawable/icon_history"/>
     </group>
+
 
 </menu>
