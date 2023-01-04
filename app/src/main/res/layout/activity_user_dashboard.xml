@@ -10,8 +10,9 @@
     android:background="@color/white"
     tools:context=".UserDashboard">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <LinearLayout
         android:layout_width="match_parent"
+        android:orientation="vertical"
         android:layout_height="match_parent">
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -32,17 +33,17 @@
                 android:minHeight="?actionBarSize"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.5"
+                app:layout_constraintVertical_bias="0.0"
                 app:titleTextColor="@color/white" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="415dp"
-            android:layout_height="673dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -63,7 +64,7 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    </LinearLayout>
 
     <include
         layout="@layout/navigation_view"/>

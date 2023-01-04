@@ -15,7 +15,7 @@
 
     <!-- Top WHITE oval shape -->
     <item
-        android:bottom="450dp"
+        android:bottom="500dp"
         >
         <bitmap
             android:src="@drawable/ellipse_20"
