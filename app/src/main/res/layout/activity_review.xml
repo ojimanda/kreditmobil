@@ -36,19 +36,19 @@
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="65dp"
+                    android:layout_height="60dp"
                     android:orientation="vertical">
 
                     <TextView
                         android:layout_width="match_parent"
-                        android:layout_height="31dp"
+                        android:layout_height="25dp"
                         android:fontFamily="sans-serif-black"
                         android:gravity="center"
                         android:text="Brand Mobil"
                         android:textSize="18sp" />
 
                     <Spinner
-                        android:id="@+id/spBrand"
+                        android:id="@+id/brandSp"
                         android:layout_width="match_parent"
                         android:layout_height="30dp"
                         android:background="@drawable/border_input"
@@ -63,19 +63,19 @@
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="65dp"
+                    android:layout_height="60dp"
                     android:orientation="vertical">
 
                     <TextView
                         android:layout_width="match_parent"
-                        android:layout_height="31dp"
+                        android:layout_height="25dp"
                         android:fontFamily="sans-serif-black"
                         android:gravity="center"
-                        android:text="Jenis Mobil"
+                        android:text="Tipe Mobil"
                         android:textSize="18sp" />
 
                     <Spinner
-                        android:id="@+id/spJenisMobil"
+                        android:id="@+id/tipeSp"
                         android:layout_width="match_parent"
                         android:layout_height="30dp"
                         android:background="@drawable/border_input"
@@ -90,21 +90,49 @@
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="65dp"
+                    android:layout_height="60dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="25dp"
+                        android:fontFamily="sans-serif-black"
+                        android:gravity="center"
+                        android:text="Merk Mobil"
+                        android:textSize="18sp" />
+
+                    <Spinner
+                        android:id="@+id/merkSp"
+                        android:layout_width="match_parent"
+                        android:layout_height="30dp"
+                        android:background="@drawable/border_input"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.0"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.132"
+                        tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
                     android:orientation="vertical">
                     <TextView
                         android:layout_width="match_parent"
-                        android:layout_height="31dp"
+                        android:layout_height="25dp"
                         android:fontFamily="sans-serif-black"
                         android:gravity="center"
                         android:text="Uang Muka"
                         android:textSize="18sp" />
 
                     <Spinner
-                        android:id="@+id/spUangMuka"
+                        android:id="@+id/dpSp"
                         android:layout_width="match_parent"
                         android:layout_height="30dp"
                         android:background="@drawable/border_input"
+                        android:entries="@array/dp"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintHorizontal_bias="0.0"
@@ -116,22 +144,23 @@
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="65dp"
+                    android:layout_height="60dp"
                     android:orientation="vertical">
 
                     <TextView
                         android:layout_width="match_parent"
-                        android:layout_height="31dp"
+                        android:layout_height="25dp"
                         android:fontFamily="sans-serif-black"
                         android:gravity="center"
                         android:text="Tenor"
                         android:textSize="18sp" />
 
                     <Spinner
-                        android:id="@+id/spTenor"
+                        android:id="@+id/tenorSp"
                         android:layout_width="match_parent"
                         android:layout_height="30dp"
                         android:background="@drawable/border_input"
+                        android:entries="@array/tenor"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintHorizontal_bias="0.0"
@@ -141,13 +170,30 @@
                         tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
                 </LinearLayout>
 
-                <Button
-                    android:id="@+id/button6"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:backgroundTint="@color/main"
-                    android:text="Hitung"
-                    tools:ignore="TouchTargetSizeCheck" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+
+                    <Button
+                        android:id="@+id/btClear"
+                        android:layout_width="112dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="20dp"
+                        android:backgroundTint="@color/main"
+                        android:text="Clear"
+                        tools:ignore="TouchTargetSizeCheck" />
+
+                    <Button
+                        android:id="@+id/btHitung"
+                        android:layout_marginStart="20dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:backgroundTint="@color/main"
+                        android:text="Hitung"
+                        tools:ignore="TouchTargetSizeCheck" />
+
+                </LinearLayout>
             </LinearLayout>
         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -164,7 +210,7 @@
 
 
                 <ImageView
-                    android:id="@+id/imageView4"
+                    android:id="@+id/imgCar"
                     android:layout_width="369dp"
                     android:layout_height="140dp"
                     android:paddingTop="5dp"
@@ -184,7 +230,7 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.5"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/imageView4"
+                    app:layout_constraintTop_toBottomOf="@+id/imgCar"
                     app:layout_constraintVertical_bias="0.5">
 
                     <LinearLayout
@@ -232,7 +278,7 @@
                             android:layout_height="31dp"
                             android:fontFamily="sans-serif-black"
                             android:gravity="center"
-                            android:text="Jenis Mobil"
+                            android:text="Merk Mobil"
                             android:textSize="18sp" />
 
                         <TextView
@@ -254,10 +300,11 @@
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintHorizontal_bias="0.5"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/imageView4"
+                        app:layout_constraintTop_toBottomOf="@+id/imgCar"
                         app:layout_constraintVertical_bias="0.5">
 
                         <TextView
+                            android:id="@+id/txCicilan"
                             android:layout_width="match_parent"
                             android:layout_height="31dp"
                             android:fontFamily="sans-serif-black"
@@ -266,6 +313,7 @@
                             android:textSize="18sp" />
 
                         <TextView
+                            android:id="@+id/txTenor"
                             android:layout_width="match_parent"
                             android:layout_height="31dp"
                             android:fontFamily="sans-serif-black"
@@ -274,6 +322,7 @@
                             android:textSize="18sp" />
 
                         <TextView
+                            android:id="@+id/txDp"
                             android:layout_width="match_parent"
                             android:layout_height="31dp"
                             android:fontFamily="sans-serif-black"
@@ -282,6 +331,7 @@
                             android:textSize="18sp" />
 
                         <TextView
+                            android:id="@+id/txMerk"
                             android:layout_width="match_parent"
                             android:layout_height="31dp"
                             android:fontFamily="sans-serif-black"
@@ -290,6 +340,7 @@
                             android:textSize="18sp" />
 
                         <TextView
+                            android:id="@+id/txBrand"
                             android:layout_width="match_parent"
                             android:layout_height="31dp"
                             android:fontFamily="sans-serif-black"

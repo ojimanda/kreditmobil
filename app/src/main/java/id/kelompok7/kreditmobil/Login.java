@@ -77,26 +77,31 @@ public class Login extends AppCompatActivity {
                                 public void onComplete(@NonNull Task<QuerySnapshot> task) {
                                     if(task.isSuccessful()) {
                                         result = task.getResult();
-                                        DocumentSnapshot document = result.getDocuments().get(0);
-                                        String uid = document.getId();
-                                        String username = document.get("nama").toString();
-                                        String role = document.get("role").toString();
-                                        if(role.equals("admin")){
-                                            Toast.makeText(Login.this, "Login berhasil", Toast.LENGTH_SHORT).show();
+                                        if(result.getDocuments().size() == 0) {
+                                            Toast.makeText(Login.this, "Wrong username/password", Toast.LENGTH_SHORT).show();
                                             progressDialog.dismiss();
-                                            Intent intent = new Intent(Login.this, AdminDashboard.class);
-                                            intent.putExtra("username",username);
-                                            startActivity(intent);
-                                            finish();
-                                        }
-                                        else{
+                                        } else {
+                                            DocumentSnapshot document = result.getDocuments().get(0);
+                                            String uid = document.getId();
+                                            String username = document.get("nama").toString();
+                                            String role = document.get("role").toString();
+                                            if(role.equals("admin")){
+                                                Toast.makeText(Login.this, "Login berhasil", Toast.LENGTH_SHORT).show();
+                                                progressDialog.dismiss();
+                                                Intent intent = new Intent(Login.this, AdminDashboard.class);
+                                                intent.putExtra("username",username);
+                                                startActivity(intent);
+                                                finish();
+                                            }
+                                            else{
 
-                                            Toast.makeText(Login.this, "Login berhasil", Toast.LENGTH_SHORT).show();
-                                            progressDialog.dismiss();
-                                            Intent intent1 = new Intent(Login.this, UserDashboard.class);
-                                            intent1.putExtra("uid", uid);
-                                            startActivity(intent1);
-                                            finish();
+                                                Toast.makeText(Login.this, "Login berhasil", Toast.LENGTH_SHORT).show();
+                                                progressDialog.dismiss();
+                                                Intent intent1 = new Intent(Login.this, UserDashboard.class);
+                                                intent1.putExtra("uid", uid);
+                                                startActivity(intent1);
+                                                finish();
+                                            }
                                         }
                                     }
                                 }
