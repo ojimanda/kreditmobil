@@ -16,8 +16,8 @@
 
     <!-- Top WHITE oval shape -->
     <item
-        android:left="-50dp"
-        android:right="-50dp"
+        android:left="-10dp"
+        android:right="-10dp"
         android:top="-300dp"
         android:bottom="475dp">
 
@@ -30,7 +30,7 @@
     <item
         android:left="-10dp"
         android:right="-10dp"
-        android:top="550dp"
+        android:top="650dp"
         android:bottom="-200dp">
 
         <shape android:shape="oval">

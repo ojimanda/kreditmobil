@@ -7,6 +7,8 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.TextView;
 
 import id.kelompok7.kreditmobil.R;
 
@@ -25,6 +27,8 @@ public class PengajuanFragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+    private TextView txNama, txNIK, txNPWP, txgaji;
+    private Button btNext;
 
     public PengajuanFragment() {
         // Required empty public constructor
@@ -61,6 +65,22 @@ public class PengajuanFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.activity_pengajuan, container, false);
+        View view = inflater.inflate(R.layout.activity_pengajuan, container, false);
+
+        // initialize variable
+        txNama = view.findViewById(R.id.namaPengajuan);
+        txNIK = view.findViewById(R.id.nikPengajuan);
+        txNPWP = view.findViewById(R.id.npwpPengajuan);
+        txgaji = view.findViewById(R.id.gajiPengajuan);
+        btNext = view.findViewById(R.id.btLanjut);
+
+        btNext.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
+
+        return view;
     }
 }
