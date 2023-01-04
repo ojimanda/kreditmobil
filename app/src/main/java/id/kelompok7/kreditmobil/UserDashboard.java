@@ -14,9 +14,15 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.navigation.NavigationView;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.Objects;
 
@@ -32,6 +38,8 @@ public class UserDashboard extends AppCompatActivity {
     NavigationView navigationView;
     LinearLayout logOut;
     String uid;
+    String namaUser;
+    private FirebaseFirestore db = FirebaseFirestore.getInstance();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,6 +65,31 @@ public class UserDashboard extends AppCompatActivity {
 
         drawerLayout.addDrawerListener(toggle);
         toggle.syncState();
+
+
+
+
+
+        View headerView =navigationView.getHeaderView(0);
+        TextView txHeader = headerView.findViewById(R.id.headerName);
+
+
+        db.collection("users")
+                        .document(uid).get()
+                        .addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+                            @Override
+                            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                                DocumentSnapshot result = task.getResult();
+                                String name = Objects.requireNonNull(result.get("nama")).toString();
+                                txHeader.setText("Hello, "+ name);
+                            }
+                        }).addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        txHeader.setText("Hello, Brow");
+                    }
+                });
+
 
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
