@@ -52,8 +52,9 @@
             android:layout_height="match_parent">
 
             <androidx.recyclerview.widget.RecyclerView
-                android:layout_width="409dp"
-                android:layout_height="446dp"
+                android:id="@+id/rv_history"
+                android:layout_width="412dp"
+                android:layout_height="454dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.5"
