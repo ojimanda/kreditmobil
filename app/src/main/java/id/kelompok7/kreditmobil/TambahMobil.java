@@ -7,6 +7,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
@@ -21,8 +22,11 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.android.gms.tasks.Continuation;
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.storage.FirebaseStorage;
@@ -109,15 +113,23 @@ public class TambahMobil extends AppCompatActivity {
                 } else{
                     StorageReference ref = storageRef.child("images/" + UUID.randomUUID().toString());
                     progressDialog.show();
-                    ref.putFile(filePath).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                    Task<Uri> urlTask = ref.putFile(filePath).continueWithTask(new Continuation<UploadTask.TaskSnapshot, Task<Uri>>() {
                         @Override
-                        public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                        public Task<Uri> then(@NonNull Task<UploadTask.TaskSnapshot> task) throws Exception {
+                            if(!task.isSuccessful()){
+                                throw task.getException();
+                            }
+                            return ref.getDownloadUrl();
+                        }
+                    }).addOnCompleteListener(new OnCompleteListener<Uri>() {
+                        @Override
+                        public void onComplete(@NonNull Task<Uri> task) {
                             String brand = getBrand.toLowerCase();
                             String tipe = getTipe.toLowerCase();
                             String merk = getMerk.toLowerCase();
                             String harga = getHarga.toLowerCase();
-//                            System.out.println(ref.getPath());
-                            saveData(brand, tipe, merk, harga, Uri.parse(ref.getPath()));
+                            Uri downloadUri = task.getResult();
+                            saveData(brand, tipe, merk, harga, downloadUri);
                         }
                     });
                 }
@@ -147,6 +159,13 @@ public class TambahMobil extends AppCompatActivity {
             });
 
     private void saveData(String brand, String tipe, String merk, String harga, Uri image) {
+
+        Map<String, Object> listMobil =  new HashMap<>();
+        listMobil.put("brand", brand);
+        listMobil.put("tipe", tipe);
+        listMobil.put("harga", harga);
+        listMobil.put("photoUri", image);
+
         Map<String, Object> mobil =new HashMap<>();
 
         mobil.put("harga", harga);
@@ -156,23 +175,15 @@ public class TambahMobil extends AppCompatActivity {
                         .addOnSuccessListener(new OnSuccessListener<Void>() {
                             @Override
                             public void onSuccess(Void unused) {
-                                Toast.makeText(TambahMobil.this, "Berhasil menambahkan list mobil", Toast.LENGTH_SHORT).show();
+
+                                db.collection("listMobil").document(merk).set(listMobil);
+                                Toast.makeText(TambahMobil.this, "Berhasil menambahkan mobil", Toast.LENGTH_SHORT).show();
                                 progressDialog.dismiss();
                                 startActivity(new Intent(TambahMobil.this, TambahMobil.class));
                                 finish();
 
                             }
                         })
-//                addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
-//                    @Override
-//                    public void onSuccess(DocumentReference documentReference) {
-//                        Toast.makeText(TambahMobil.this, "Berhasil menambahkan list mobil", Toast.LENGTH_SHORT).show();
-//                        progressDialog.dismiss();
-//                    }
-//
-//                }
-
-//                )
                 .addOnFailureListener(new OnFailureListener() {
                     @Override
                     public void onFailure(@NonNull Exception e) {

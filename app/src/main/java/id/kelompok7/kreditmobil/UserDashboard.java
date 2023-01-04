@@ -129,6 +129,8 @@ public class UserDashboard extends AppCompatActivity {
             public void onClick(View view) {
                 Toast.makeText(UserDashboard.this, "Log Out", Toast.LENGTH_SHORT).show();
                 drawerLayout.closeDrawer(GravityCompat.START);
+                startActivity(new Intent(UserDashboard.this, Login.class));
+                finish();
             }
         });
 
