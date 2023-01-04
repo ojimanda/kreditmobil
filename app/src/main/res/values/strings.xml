@@ -4,4 +4,18 @@
     <string name="app_close">Close</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string-array name="dp">
+        <item>0</item>
+        <item>10</item>
+        <item>20</item>
+        <item>30</item>
+    </string-array>
+
+    <string-array name="tenor">
+        <item>12</item>
+        <item>24</item>
+        <item>36</item>
+        <item>48</item>
+    </string-array>
 </resources>
