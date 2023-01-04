@@ -20,6 +20,7 @@ import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.navigation.NavigationBarView;
+import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QuerySnapshot;
@@ -37,6 +38,7 @@ public class PengajuanKredit extends AppCompatActivity {
     Button btPengajuan;
     String brand, tipe, merk, dp, tenor, cicilan;
     FirebaseFirestore db = FirebaseFirestore.getInstance();
+    private QuerySnapshot result;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -96,7 +98,7 @@ public class PengajuanKredit extends AppCompatActivity {
         btPengajuan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Map<String, String> ajuan = new HashMap<>();
+                Map<String, Object> ajuan = new HashMap<>();
                 brand = spBrand.getSelectedItem().toString();
                 tipe = spTipe.getSelectedItem().toString();
                 merk = spMerk.getSelectedItem().toString();
@@ -104,74 +106,92 @@ public class PengajuanKredit extends AppCompatActivity {
                 tenor = spTenor.getSelectedItem().toString();
                 cicilan = cicilanPerBulan(300000000, Integer.parseInt(dp), Integer.parseInt(tenor));
 
-                ajuan.put("brand", brand);
-                ajuan.put("tipe", tipe);
-                ajuan.put("merk", merk);
-                ajuan.put("dp", dp);
-                ajuan.put("tenor", tenor);
-                ajuan.put("cicilan", cicilan);
-                ajuan.put("nama", nama);
-                ajuan.put("nik", nik);
-                ajuan.put("npwp", npwp);
-                ajuan.put("gaji", gaji);
-                ajuan.put("status", "pending");
-
                 AlertDialog.Builder builder = new AlertDialog.Builder(PengajuanKredit.this);
                 builder.setTitle("KONFIRMASI");
                 builder.setMessage("Apakah anda yakin?");
                 builder.setPositiveButton("Ya", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
-                        db.collection("users").document(uid)
-                                        .get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
-                                    @Override
-                                    public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-                                        if(task.isSuccessful()){
-                                            DocumentSnapshot res = task.getResult();
-                                            Object hasil = res.get("pengajuan");
-                                            assert hasil != null;
-                                            String getHasil = hasil.toString();
-                                            if(getHasil.contains(nik)) {
-                                                Toast.makeText(PengajuanKredit.this, "Mohon maaf anda telah mengajukan KPM", Toast.LENGTH_SHORT).show();
-                                            } else {
-                                                Toast.makeText(PengajuanKredit.this, "OKE", Toast.LENGTH_SHORT).show();
-                                                db.collection("users").document(uid)
-                                                        .update("pengajuan", ajuan)
-                                                        .addOnSuccessListener(new OnSuccessListener<Void>() {
-                                                            @Override
-                                                            public void onSuccess(Void unused) {
-                                                                Toast.makeText(PengajuanKredit.this, "Pengajuan anda sedang diproses", Toast.LENGTH_SHORT).show();
-                                                            }
-                                                        }).addOnFailureListener(new OnFailureListener() {
-                                                            @Override
-                                                            public void onFailure(@NonNull Exception e) {
-                                                                Toast.makeText(PengajuanKredit.this, "Pengajuan gagal", Toast.LENGTH_SHORT).show();
-                                                            }
-                                                        });
-                                            }
-                                        } else {
-                                            Toast.makeText(PengajuanKredit.this, "Diterima", Toast.LENGTH_SHORT).show();
-                                        }
-                                    }
-                                }).addOnFailureListener(new OnFailureListener() {
-                                    @Override
-                                    public void onFailure(@NonNull Exception e) {
-                                        Toast.makeText(PengajuanKredit.this, "OKE", Toast.LENGTH_SHORT).show();
-                                        db.collection("users").document(uid)
-                                                .update("pengajuan", ajuan)
-                                                .addOnSuccessListener(new OnSuccessListener<Void>() {
-                                                    @Override
-                                                    public void onSuccess(Void unused) {
-                                                        Toast.makeText(PengajuanKredit.this, "Pengajuan anda sedang diproses", Toast.LENGTH_SHORT).show();
-                                                    }
-                                                }).addOnFailureListener(new OnFailureListener() {
-                                                    @Override
-                                                    public void onFailure(@NonNull Exception e) {
-                                                        Toast.makeText(PengajuanKredit.this, "Pengajuan gagal", Toast.LENGTH_SHORT).show();
-                                                    }
-                                                });
-                                    }
-                                });
+                       db.collection("pengajuan").document(uid)
+                               .get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+                                   @Override
+                                   public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                                       ajuan.put("pengajuanId", task.getResult().getId());
+                                       ajuan.put("brand", brand);
+                                       ajuan.put("tipe", tipe);
+                                       ajuan.put("merk", merk);
+                                       ajuan.put("dp", dp);
+                                       ajuan.put("tenor", tenor);
+                                       ajuan.put("cicilan", cicilan);
+                                       ajuan.put("nama", nama);
+                                       ajuan.put("nik", nik);
+                                       ajuan.put("npwp", npwp);
+                                       ajuan.put("gaji", gaji);
+                                       ajuan.put("status", "pending");
+
+                                       // cek status
+                                       db.collection("pengajuan")
+                                               .whereEqualTo("pengajuanId", task.getResult().getId())
+                                               .get()
+                                               .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                                                   // jika ada data
+                                                   @Override
+                                                   public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                                                       if(task.isSuccessful()) {
+                                                           result = task.getResult();
+                                                           List<DocumentSnapshot> getDocument = new ArrayList<>();
+                                                           for(DocumentSnapshot document: result) {
+                                                               if(document.get("status").toString().equals("pending")) {
+                                                                   getDocument.add(document);
+                                                               }
+                                                           }
+                                                           if(getDocument.size() == 0) {
+                                                               db.collection("pengajuan")
+                                                                       .add(ajuan)
+                                                                       .addOnCompleteListener(new OnCompleteListener<DocumentReference>() {
+                                                                           @Override
+                                                                           public void onComplete(@NonNull Task<DocumentReference> task) {
+                                                                               Toast.makeText(PengajuanKredit.this, "Data sudah diajukan", Toast.LENGTH_SHORT).show();
+                                                                               Toast.makeText(PengajuanKredit.this, "Mohon ditunggu untuk diproses", Toast.LENGTH_SHORT).show();
+                                                                           }
+                                                                       }).addOnFailureListener(new OnFailureListener() {
+                                                                           @Override
+                                                                           public void onFailure(@NonNull Exception e) {
+                                                                               Toast.makeText(PengajuanKredit.this, "Data gagal diajukan", Toast.LENGTH_SHORT).show();
+                                                                           }
+                                                                       });
+                                                           } else {
+                                                               Toast.makeText(PengajuanKredit.this, "Anda sudah pernah mengajukan KPM", Toast.LENGTH_SHORT).show();
+                                                           }
+                                                       }
+                                                   }
+                                               }).addOnFailureListener(new OnFailureListener() {
+                                                   // jika tidak ada data
+                                                   @Override
+                                                   public void onFailure(@NonNull Exception e) {
+                                                       db.collection("pengajuan")
+                                                               .add(ajuan)
+                                                               .addOnCompleteListener(new OnCompleteListener<DocumentReference>() {
+                                                                   @Override
+                                                                   public void onComplete(@NonNull Task<DocumentReference> task) {
+                                                                       Toast.makeText(PengajuanKredit.this, "Data sudah diajukan", Toast.LENGTH_SHORT).show();
+                                                                       Toast.makeText(PengajuanKredit.this, "Mohon ditunggu untuk diproses", Toast.LENGTH_SHORT).show();
+                                                                   }
+                                                               }).addOnFailureListener(new OnFailureListener() {
+                                                                   @Override
+                                                                   public void onFailure(@NonNull Exception e) {
+                                                                       Toast.makeText(PengajuanKredit.this, "Data gagal diajukan", Toast.LENGTH_SHORT).show();
+                                                                   }
+                                                               });
+                                                   }
+                                               });
+                                   }
+                               }).addOnFailureListener(new OnFailureListener() {
+                                   @Override
+                                   public void onFailure(@NonNull Exception e) {
+                                       Toast.makeText(PengajuanKredit.this, "Mohon Registrasi terlebih dahulu", Toast.LENGTH_SHORT).show();
+                                   }
+                               });
                     }
                 });
                 builder.setNeutralButton("No", new DialogInterface.OnClickListener() {
