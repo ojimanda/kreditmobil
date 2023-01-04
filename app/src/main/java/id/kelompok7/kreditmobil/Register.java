@@ -87,7 +87,6 @@ public class Register extends AppCompatActivity {
 
     private void saveData(String nama, String email, String password) {
         Map<String, Object> user =new HashMap<>();
-
         user.put("nama", nama);
         user.put("email", email);
         user.put("password", password);
@@ -99,7 +98,7 @@ public class Register extends AppCompatActivity {
                 .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
                     @Override
                     public void onSuccess(DocumentReference documentReference) {
-                        Toast.makeText(Register.this, "Akun anda sudah terdaftar", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(Register.this, "Berhasil mendaftarkan akun", Toast.LENGTH_SHORT).show();
                         progressDialog.dismiss();
                         startActivity(new Intent(Register.this, Login.class));
                         finish();
