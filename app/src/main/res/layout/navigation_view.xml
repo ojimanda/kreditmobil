@@ -9,6 +9,7 @@
     android:backgroundTint="@color/main"
     app:itemIconTint="@color/white"
     android:theme="@style/nav_style"
+    android:id="@+id/navigation_view"
     app:itemIconPadding="30dp"
     app:itemIconSize="30dp"
     app:itemVerticalPadding="20dp"
@@ -17,6 +18,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
+        android:id="@+id/logOut"
         android:layout_height="50dp"
         android:layout_margin="10dp"
         android:orientation="horizontal"
