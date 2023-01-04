@@ -15,15 +15,15 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="236dp">
+            android:layout_height="300dp">
 
             <ImageView
                 android:id="@+id/imageView22"
                 android:layout_width="148dp"
                 android:layout_height="146dp"
-                android:layout_marginTop="4dp"
+                android:layout_marginTop="76dp"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.498"
+                app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:srcCompat="@drawable/lease" />
@@ -32,7 +32,7 @@
                 android:id="@+id/textView39"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="28dp"
+                android:layout_marginTop="25dp"
                 android:fontFamily="sans-serif-black"
                 android:text="Pilih Kendaraan"
                 android:textColor="#FFFFFF"
@@ -43,17 +43,19 @@
                 app:layout_constraintTop_toBottomOf="@+id/imageView22" />
 
             <ImageButton
-                android:id="@+id/imageButton"
+                android:id="@+id/btKembali"
                 android:layout_width="30dp"
                 android:layout_height="40dp"
-                android:layout_margin="15dp"
+                android:layout_margin="20dp"
+                android:layout_marginTop="16dp"
                 android:background="@color/main"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintHorizontal_bias="0.041"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:srcCompat="@drawable/back"
-                app:tint="@color/white" />
+                app:tint="@color/white"
+                tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -61,7 +63,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:paddingHorizontal="70dp"
-            android:paddingVertical="30dp">
+            android:paddingVertical="40dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -90,7 +92,11 @@
 
                     <Spinner
                         android:id="@+id/spBrand"
+                        android:textAlignment="center"
+                        android:spinnerMode="dialog"
+                        android:gravity="center"
                         android:layout_width="match_parent"
+                        android:layout_gravity="center"
                         android:layout_height="30dp"
                         android:background="@drawable/border_input"
                         app:layout_constraintBottom_toBottomOf="parent"
@@ -118,7 +124,9 @@
                     <Spinner
                         android:id="@+id/spTipe"
                         android:layout_width="match_parent"
+                        android:spinnerMode="dialog"
                         android:layout_height="30dp"
+                        android:textAlignment="center"
                         android:background="@drawable/border_input"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
@@ -146,6 +154,8 @@
                         android:id="@+id/spMerkMobil"
                         android:layout_width="match_parent"
                         android:layout_height="30dp"
+                        android:textAlignment="center"
+                        android:spinnerMode="dialog"
                         android:background="@drawable/border_input"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
@@ -163,15 +173,17 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="31dp"
-                        android:text="Uang Muka"
+                        android:fontFamily="sans-serif-black"
                         android:gravity="center"
-                        android:textSize="18sp"
-                        android:fontFamily="sans-serif-black"/>
+                        android:text="Uang Muka (%)"
+                        android:textSize="18sp" />
 
                     <Spinner
                         android:id="@+id/spUangMuka"
+                        android:textAlignment="center"
                         android:layout_width="match_parent"
                         android:layout_height="30dp"
+                        android:entries="@array/dp"
                         android:background="@drawable/border_input"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
@@ -189,13 +201,15 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="31dp"
-                        android:text="Tenor"
+                        android:fontFamily="sans-serif-black"
                         android:gravity="center"
-                        android:textSize="18sp"
-                        android:fontFamily="sans-serif-black"/>
+                        android:text="Tenor (Bulan)"
+                        android:textSize="18sp" />
 
                     <Spinner
                         android:id="@+id/spTenor"
+                        android:textAlignment="center"
+                        android:entries="@array/tenor"
                         android:layout_width="match_parent"
                         android:layout_height="30dp"
                         android:background="@drawable/border_input"
@@ -209,7 +223,7 @@
                 </LinearLayout>
 
                 <Button
-                    android:id="@+id/button6"
+                    android:id="@+id/btPengajuan"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:backgroundTint="@color/main"

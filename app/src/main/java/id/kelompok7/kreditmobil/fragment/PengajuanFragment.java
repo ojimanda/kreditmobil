@@ -1,5 +1,6 @@
 package id.kelompok7.kreditmobil.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -10,7 +11,9 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
+import id.kelompok7.kreditmobil.PengajuanKredit;
 import id.kelompok7.kreditmobil.R;
+import id.kelompok7.kreditmobil.UserDashboard;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -74,13 +77,44 @@ public class PengajuanFragment extends Fragment {
         txgaji = view.findViewById(R.id.gajiPengajuan);
         btNext = view.findViewById(R.id.btLanjut);
 
+        UserDashboard userDashboard = (UserDashboard) getActivity();
+        assert userDashboard != null;
+        String uid = userDashboard.getUid();
+
+
         btNext.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                String nama = txNama.getText().toString();
+                String nik = txNIK.getText().toString();
+                String npwp = txNPWP.getText().toString();
+                String gaji = txgaji.getText().toString();
 
+                if (nama.equals("")) {
+                    txNama.setError("Masukkan nama anda");
+                } else if (nik.equals("")) {
+                    txNIK.setError("Masukkan NIK anda");
+                } else if (npwp.equals("")) {
+                    txNPWP.setError("Masukkan NPWP anda");
+                } else if (gaji.equals("")) {
+                    txgaji.setError("Masukkan jumlah gaji anda");
+                } else {
+                    if (nik.length() != 16) {
+                        txNIK.setError("NIK yang anda masukkan salah");
+                    } else if (npwp.length() != 16) {
+                        txNIK.setError("NPWP yang anda masukkan salah");
+                    } else {
+                        Intent intent = new Intent(getContext(), PengajuanKredit.class);
+                        intent.putExtra("uid", uid);
+                        intent.putExtra("nama", nama);
+                        intent.putExtra("nik", nik);
+                        intent.putExtra("npwp", npwp);
+                        intent.putExtra("gaji", gaji);
+                        startActivity(intent);
+                    }
+                }
             }
         });
-
         return view;
     }
 }

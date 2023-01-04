@@ -31,15 +31,15 @@ public class UserDashboard extends AppCompatActivity {
     DrawerLayout drawerLayout;
     NavigationView navigationView;
     LinearLayout logOut;
+    String uid;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_dashboard);
         Intent intent = getIntent();
-        String uid = intent.getStringExtra("uid");
+        uid = intent.getStringExtra("uid");
         Toast.makeText(this, uid, Toast.LENGTH_SHORT).show();
-
         setFragment(new MainFragment());
 
         toolbar = findViewById(R.id.toolbar);
@@ -106,4 +106,9 @@ public class UserDashboard extends AppCompatActivity {
                 .replace(R.id.frame_layout, fragment)
                 .commit();
     }
+
+    public String getUid() {
+        return uid;
+    }
+
 }
