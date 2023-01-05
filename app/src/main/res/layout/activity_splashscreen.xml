@@ -3,50 +3,32 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
-
-    <ImageView
-        android:id="@+id/imageView16"
-        android:layout_width="1094dp"
-        android:layout_height="155dp"
-        android:layout_marginBottom="636dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:srcCompat="@drawable/subtract__1_"
-        tools:layout_editor_absoluteX="-342dp" />
-
-    <ImageView
-        android:id="@+id/imageView17"
-        android:layout_width="737dp"
-        android:layout_height="152dp"
-        android:layout_marginTop="604dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ellipse_12" />
+    android:layout_height="match_parent"
+    android:background="@drawable/background_splash">
 
     <ProgressBar
         android:id="@+id/progressBar"
         style="?android:attr/progressBarStyleHorizontal"
-        android:layout_width="179dp"
-        android:layout_height="28dp"
+        android:layout_width="256dp"
+        android:layout_height="41dp"
         android:indeterminate="true"
         android:indeterminateTint="#00B2FF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.614" />
+        app:layout_constraintTop_toBottomOf="@+id/imageView18"
+        app:layout_constraintVertical_bias="0.092" />
 
     <ImageView
         android:id="@+id/imageView18"
-        android:layout_width="204dp"
-        android:layout_height="209dp"
+        android:layout_width="261dp"
+        android:layout_height="287dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/imageView16"
-        app:layout_constraintVertical_bias="0.433"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.381"
         app:srcCompat="@drawable/car_50ntm1mjbtmo_512" />
 
     <TextView
@@ -60,6 +42,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.938" />
+        app:layout_constraintTop_toBottomOf="@+id/progressBar"
+        app:layout_constraintVertical_bias="0.867" />
 </androidx.constraintlayout.widget.ConstraintLayout>

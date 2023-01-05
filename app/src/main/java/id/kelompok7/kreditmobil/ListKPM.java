@@ -32,6 +32,7 @@ public class ListKPM extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_approval);
+<<<<<<< Updated upstream
 
         db.collection("pengajuan")
                 .get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
@@ -57,6 +58,8 @@ public class ListKPM extends AppCompatActivity {
                         }
                     }
                 });
+=======
+>>>>>>> Stashed changes
     }
 
 }

@@ -16,10 +16,10 @@
 
     <!-- Top WHITE oval shape -->
     <item
-        android:left="-10dp"
-        android:right="-10dp"
+        android:left="-45dp"
+        android:right="-45dp"
         android:top="-300dp"
-        android:bottom="475dp">
+        android:bottom="550dp">
 
         <shape android:shape="oval">
 
@@ -28,9 +28,9 @@
         </shape>
     </item>
     <item
-        android:left="-10dp"
-        android:right="-10dp"
-        android:top="650dp"
+        android:left="-45dp"
+        android:right="-45dp"
+        android:top="770dp"
         android:bottom="-200dp">
 
         <shape android:shape="oval">

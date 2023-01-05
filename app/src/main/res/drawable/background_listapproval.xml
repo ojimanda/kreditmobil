@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+
     <!-- Container GRAY rectangle -->
     <item>
         <shape android:shape="rectangle">
@@ -18,10 +19,24 @@
         android:left="-45dp"
         android:right="-45dp"
         android:top="-300dp"
-        android:bottom="650dp"
-        >
-        <bitmap
-            android:src="@drawable/ellipse_20"
-            />
+        android:bottom="600dp">
+
+        <shape android:shape="oval">
+
+            <solid
+                android:color="#00B2FF" />
+        </shape>
+    </item>
+    <item
+        android:left="-30dp"
+        android:right="-30dp"
+        android:top="750dp"
+        android:bottom="-200dp">
+
+        <shape android:shape="oval">
+
+            <solid
+                android:color="#00B2FF" />
+        </shape>
     </item>
 </layer-list>

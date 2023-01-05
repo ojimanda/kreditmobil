@@ -40,7 +40,7 @@
             android:layout_marginStart="10dp"
             android:layout_weight="1"
             android:textColor="@color/main"
-            android:fontFamily="sans-serif-black"
+            android:fontFamily="sans-serif-medium"
             android:text="Log Out" />
 
 
