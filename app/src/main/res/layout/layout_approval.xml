@@ -43,14 +43,14 @@
                         android:id="@+id/nameList"
                         android:paddingBottom="5dp"
                         android:layout_width="match_parent"
-                        android:fontFamily="sans-serif-black"
+                        android:fontFamily="sans-serif-medium"
                         android:layout_height="wrap_content"
                         android:text="Nama" />
 
                     <TextView
                         android:id="@+id/merkList"
                         android:layout_width="match_parent"
-                        android:fontFamily="sans-serif-black"
+                        android:fontFamily="sans-serif-medium"
                         android:layout_height="wrap_content"
                         android:text="Merk Mobil" />
                 </LinearLayout>
@@ -67,7 +67,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:gravity="bottom"
-                        android:fontFamily="sans-serif-black"
+                        android:fontFamily="sans-serif-medium"
                         android:textSize="17sp"
                         android:textColor="#22BB33"
                         android:text="APPROVED" />

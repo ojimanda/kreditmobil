@@ -13,15 +13,28 @@
         </shape>
     </item>
 
+    <item
+        android:bottom="700dp">
+
+        <shape android:shape="rectangle">
+
+            <solid
+                android:color="#00B2FF" />
+        </shape>
+    </item>
+
     <!-- Top WHITE oval shape -->
     <item
-        android:left="-45dp"
-        android:right="-45dp"
-        android:top="-300dp"
-        android:bottom="650dp"
-        >
-        <bitmap
-            android:src="@drawable/ellipse_20"
-            />
+        android:left="-30dp"
+        android:right="-30dp"
+        android:top="750dp"
+        android:bottom="-200dp">
+
+        <shape android:shape="oval">
+
+            <solid
+                android:color="#00B2FF" />
+        </shape>
     </item>
+
 </layer-list>

@@ -11,7 +11,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout2"
         android:layout_width="match_parent"
-        android:layout_height="275dp"
+        android:layout_height="325dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
@@ -20,12 +20,13 @@
         <ImageView
             android:layout_width="300dp"
             android:layout_height="200dp"
+            android:layout_marginBottom="72dp"
             android:elevation="10dp"
-            app:circularflow_radiusInDP="10dp"
             android:src="@drawable/home_car"
+            app:circularflow_radiusInDP="10dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintHorizontal_bias="0.495"
             app:layout_constraintStart_toStartOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
@@ -33,13 +34,13 @@
     <LinearLayout
         android:id="@+id/constraintLayout4"
         android:layout_width="match_parent"
-        android:layout_height="271dp"
+        android:layout_height="332dp"
+        android:gravity="center_vertical"
         android:paddingHorizontal="40dp"
         app:layout_constraintBottom_toTopOf="@+id/constraintLayout3"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        android:gravity="center_vertical"
         app:layout_constraintTop_toBottomOf="@+id/constraintLayout2"
         app:layout_constraintVertical_bias="0.5">
 
@@ -52,10 +53,10 @@
                 android:id="@+id/textInputLayout"
                 android:layout_width="330dp"
                 android:layout_height="50dp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
                 android:hint="Email"
-                app:hintTextAppearance="@style/TextLabel">
+                app:hintTextAppearance="@style/TextLabel"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
 
 
                 <EditText
@@ -79,9 +80,9 @@
                 android:layout_height="50dp"
                 android:gravity="center"
                 android:hint="Password"
-                app:hintTextAppearance="@style/TextLabel"
                 app:boxBackgroundColor="@color/white"
                 app:boxBackgroundMode="filled"
+                app:hintTextAppearance="@style/TextLabel"
                 app:layout_constraintBottom_toTopOf="@+id/btLogin"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"

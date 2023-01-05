@@ -21,7 +21,7 @@
                 android:id="@+id/imageView22"
                 android:layout_width="148dp"
                 android:layout_height="146dp"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="16dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.498"
                 app:layout_constraintStart_toStartOf="parent"
@@ -32,13 +32,13 @@
                 android:id="@+id/textView39"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="25dp"
+                android:layout_marginTop="16dp"
                 android:fontFamily="sans-serif-black"
                 android:text="Pilih Kendaraan"
                 android:textColor="#FFFFFF"
                 android:textSize="18sp"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintHorizontal_bias="0.498"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/imageView22" />
 
@@ -57,6 +57,7 @@
                 app:tint="@color/white"
                 tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
 
+
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -66,16 +67,16 @@
             android:paddingVertical="40dp">
 
             <LinearLayout
-                android:layout_width="272dp"
-                android:layout_height="379dp"
+                android:layout_width="280dp"
+                android:layout_height="460dp"
                 android:gravity="center"
                 android:orientation="vertical"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintHorizontal_bias="0.58"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.5">
+                app:layout_constraintVertical_bias="0.0">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -85,7 +86,7 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="31dp"
-                        android:fontFamily="sans-serif-black"
+                        android:fontFamily="sans-serif-medium"
                         android:gravity="center"
                         android:text="Brand Mobil"
                         android:textColor="#000000"
@@ -96,7 +97,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="30dp"
                         android:layout_gravity="center"
-                        android:background="@drawable/border_input"
+                        android:background="@drawable/border_spinner"
                         android:gravity="center"
                         android:spinnerMode="dialog"
                         android:textAlignment="center"
@@ -117,7 +118,7 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="31dp"
-                        android:fontFamily="sans-serif-black"
+                        android:fontFamily="sans-serif-medium"
                         android:gravity="center"
                         android:text="Tipe Mobil"
                         android:textColor="#000000"
@@ -127,7 +128,7 @@
                         android:id="@+id/spTipe"
                         android:layout_width="match_parent"
                         android:layout_height="30dp"
-                        android:background="@drawable/border_input"
+                        android:background="@drawable/border_spinner"
                         android:spinnerMode="dialog"
                         android:textAlignment="center"
                         app:layout_constraintBottom_toBottomOf="parent"
@@ -147,7 +148,7 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="31dp"
-                        android:fontFamily="sans-serif-black"
+                        android:fontFamily="sans-serif-medium"
                         android:gravity="center"
                         android:text="Merk Mobil"
                         android:textColor="#000000"
@@ -157,7 +158,7 @@
                         android:id="@+id/spMerkMobil"
                         android:layout_width="match_parent"
                         android:layout_height="30dp"
-                        android:background="@drawable/border_input"
+                        android:background="@drawable/border_spinner"
                         android:spinnerMode="dialog"
                         android:textAlignment="center"
                         app:layout_constraintBottom_toBottomOf="parent"
@@ -177,7 +178,7 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="31dp"
-                        android:fontFamily="sans-serif-black"
+                        android:fontFamily="sans-serif-medium"
                         android:gravity="center"
                         android:text="Uang Muka (%)"
                         android:textColor="#000000"
@@ -187,7 +188,7 @@
                         android:id="@+id/spUangMuka"
                         android:layout_width="match_parent"
                         android:layout_height="30dp"
-                        android:background="@drawable/border_input"
+                        android:background="@drawable/border_spinner"
                         android:entries="@array/dp"
                         android:textAlignment="center"
                         app:layout_constraintBottom_toBottomOf="parent"
@@ -207,7 +208,7 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="31dp"
-                        android:fontFamily="sans-serif-black"
+                        android:fontFamily="sans-serif-medium"
                         android:gravity="center"
                         android:text="Tenor (Bulan)"
                         android:textColor="#000000"
@@ -217,7 +218,7 @@
                         android:id="@+id/spTenor"
                         android:layout_width="match_parent"
                         android:layout_height="30dp"
-                        android:background="@drawable/border_input"
+                        android:background="@drawable/border_spinner"
                         android:entries="@array/tenor"
                         android:textAlignment="center"
                         app:layout_constraintBottom_toBottomOf="parent"

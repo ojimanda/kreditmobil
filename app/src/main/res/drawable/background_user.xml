@@ -15,14 +15,17 @@
 
     <!-- Top WHITE oval shape -->
     <item
-        android:bottom="450dp"
+        android:left="-45dp"
+        android:right="-45dp"
+        android:top="-300dp"
+        android:bottom="550dp"
         >
         <bitmap
             android:src="@drawable/ellipse_20"
             />
     </item>
     <item
-        android:top="675dp">
+        android:top="820dp">
 
         <shape android:shape="rectangle">
 
