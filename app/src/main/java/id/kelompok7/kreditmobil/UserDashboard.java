@@ -96,12 +96,10 @@ public class UserDashboard extends AppCompatActivity {
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 switch (item.getItemId()) {
                     case R.id.nav_home:
-                        Toast.makeText(UserDashboard.this, "Home", Toast.LENGTH_SHORT).show();
                         Objects.requireNonNull(getSupportActionBar()).setDisplayShowTitleEnabled(false);
                         setFragment(new MainFragment());
                         break;
                     case R.id.nav_pengajuan:
-                        Toast.makeText(UserDashboard.this, "Pengajuan", Toast.LENGTH_SHORT).show();
                         Objects.requireNonNull(getSupportActionBar()).setDisplayShowTitleEnabled(false);
                         setFragment(new PengajuanFragment());
                         break;
@@ -112,12 +110,10 @@ public class UserDashboard extends AppCompatActivity {
                         finish();
                         break;
                     case R.id.nav_history:
-                        Toast.makeText(UserDashboard.this, "History", Toast.LENGTH_SHORT).show();
                         Objects.requireNonNull(getSupportActionBar()).setDisplayShowTitleEnabled(false);
                         setFragment(new HistoryFragment());
                         break;
                     case R.id.nav_review:
-                        Toast.makeText(UserDashboard.this, "Review", Toast.LENGTH_SHORT).show();
                         Objects.requireNonNull(getSupportActionBar()).setDisplayShowTitleEnabled(true);
                         toolbar.setTitle("Data Pengajuan dan Rincian Cicilan");
                         setFragment(new ReviewFragment());
@@ -133,7 +129,6 @@ public class UserDashboard extends AppCompatActivity {
         logOut.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(UserDashboard.this, "Log Out", Toast.LENGTH_SHORT).show();
                 drawerLayout.closeDrawer(GravityCompat.START);
                 startActivity(new Intent(UserDashboard.this, Login.class));
                 finish();

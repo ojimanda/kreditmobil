@@ -87,11 +87,11 @@ public class HistoryFragment extends Fragment {
                 String uid = historyCursor.getString(1);
                 brand = historyCursor.getString(2);
                 merk = historyCursor.getString(3);
-                dp = historyCursor.getString(4);
-                tenor = historyCursor.getString(5);
-                cicilan = historyCursor.getString(6);
+                tenor = historyCursor.getString(4); // tenor
+                cicilan = historyCursor.getString(5); // cicilan?
+                dp = historyCursor.getString(6); // dp
                 System.out.println(brand + " "+ merk + " " +cicilan);
-                element.add(new ModelHistory(brand, merk, dp +"%", "Rp " + cicilan + " per bulan"));
+                element.add(new ModelHistory(brand, merk, dp +"%", "Rp " + cicilan + " selama "+ tenor+" bulan"));
             }
 
             HistoryAdapter adapter = new HistoryAdapter(element, getContext());

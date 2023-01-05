@@ -28,6 +28,8 @@ import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FieldValue;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
@@ -35,6 +37,8 @@ import com.google.firebase.storage.UploadTask;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
@@ -171,15 +175,51 @@ public class TambahMobil extends AppCompatActivity {
         mobil.put("harga", harga);
         mobil.put("photoUri", image);
 
+        String value = brand+"-"+tipe;
+
         db.collection("mobil").document(brand).collection(tipe).document(merk).set(mobil)
                         .addOnSuccessListener(new OnSuccessListener<Void>() {
                             @Override
                             public void onSuccess(Void unused) {
-
                                 db.collection("listMobil").document(merk).set(listMobil);
+
+                                db.collection("mobil").document(brand)
+                                        .get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+                                            @Override
+                                            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                                                if(task.isSuccessful()) {
+                                                    if(task.getResult().get("tipe") != null && task.getResult().exists()) {
+                                                        db.collection("mobil").document(brand)
+                                                                .get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+                                                                    @Override
+                                                                    public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                                                Object res = task.getResult().get("tipe");
+                                                assert res != null;
+                                                String[] data = res.toString().replace("[", "").replace("]", "").split(",");
+                                                ArrayList<String> arrayList = new ArrayList<>(Arrays.asList(data));
+                                                arrayList.add("mazda-new");
+                                                if(!arrayList.contains(value)){
+                                                    DocumentReference doc = db.collection("mobil").document(brand);
+                                                    doc.update("tipe", FieldValue.arrayUnion(value));
+                                                }
+                                                                    }
+                                                                });
+                                                    } else {
+                                                        DocumentReference doc = db.collection("mobil").document("mazda");
+                                                        doc.update("tipe", FieldValue.arrayUnion(value));
+                                                    }
+                                                }
+                                            }
+                                        }).addOnFailureListener(new OnFailureListener() {
+                                            @Override
+                                            public void onFailure(@NonNull Exception e) {
+
+                                            }
+                                        });
+
                                 Toast.makeText(TambahMobil.this, "Berhasil menambahkan mobil", Toast.LENGTH_SHORT).show();
                                 progressDialog.dismiss();
-                                startActivity(new Intent(TambahMobil.this, TambahMobil.class));
+                                startActivity(new Intent(TambahMobil.this, AdminDashboard.class));
                                 finish();
 
                             }

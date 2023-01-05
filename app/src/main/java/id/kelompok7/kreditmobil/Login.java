@@ -1,6 +1,7 @@
 package id.kelompok7.kreditmobil;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.ProgressDialog;
@@ -14,13 +15,26 @@ import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.firestore.AggregateQuery;
+import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.EventListener;
+import com.google.firebase.firestore.FieldValue;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.FirebaseFirestoreException;
+import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
+import com.google.firebase.firestore.SnapshotMetadata;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 
 public class Login extends AppCompatActivity {
 
@@ -55,6 +69,26 @@ public class Login extends AppCompatActivity {
                 finish();
             }
         });
+
+
+        db.collection("mobil").document("honda")
+                .get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                        List<String> listTipe = new ArrayList<>();
+                        if(task.isSuccessful()) {
+                            Object res = task.getResult().get("tipe");
+                            assert res != null;
+                            String[] datas = res.toString().replace("[", "").replace("]", "").split(",");
+                            for(String data: datas) {
+                                System.out.println(data);
+                            }
+                        }
+                    }
+                });
+
+
+
 
         btLogin.setOnClickListener(new View.OnClickListener() {
             @Override
