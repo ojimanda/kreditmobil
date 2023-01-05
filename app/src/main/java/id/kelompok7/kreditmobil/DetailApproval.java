@@ -34,9 +34,9 @@ public class DetailApproval extends AppCompatActivity {
         setContentView(R.layout.activity_listdetails);
 
         Intent intent = getIntent();
-        btBack = findViewById(R.id.btBackApprove);
-        btTerima = findViewById(R.id.btApproved);
-        btTolak = findViewById(R.id.btDenied);
+        btBack = findViewById(R.id.btnBackListDetail);
+        btTerima = findViewById(R.id.btnApproveListDetail);
+        btTolak = findViewById(R.id.btnDenyListDetail);
         nik = findViewById(R.id.approvalNik);
         nama = findViewById(R.id.approvalNama);
         npwp = findViewById(R.id.approvalNpwp);

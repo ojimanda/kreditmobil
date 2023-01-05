@@ -2,12 +2,14 @@ package id.kelompok7.kreditmobil;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -129,9 +131,26 @@ public class UserDashboard extends AppCompatActivity {
         logOut.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                drawerLayout.closeDrawer(GravityCompat.START);
-                startActivity(new Intent(UserDashboard.this, Login.class));
-                finish();
+
+                AlertDialog.Builder builder = new AlertDialog.Builder(UserDashboard.this);
+                builder.setTitle("Log Out");
+                builder.setMessage("Are you sure?");
+                builder.setCancelable(true);
+                builder.setNeutralButton("Yes", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        drawerLayout.closeDrawer(GravityCompat.START);
+                        startActivity(new Intent(UserDashboard.this, Login.class));
+                        finish();
+                    }
+                });
+                builder.setPositiveButton("No", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                    }
+                });
+                AlertDialog alertDialog1 = builder.create();
+                alertDialog1.show();
             }
         });
 
