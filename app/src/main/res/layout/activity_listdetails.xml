@@ -204,7 +204,9 @@
                     android:layout_width="220dp"
                     android:layout_height="35dp"
                     android:background="@drawable/border_input"
-                    android:fontFamily="sans-serif-black"
+                    android:fontFamily="sans-serif-medium"
+                    android:gravity="center"
+                    android:paddingStart="15dp"
                     android:textColor="#000000" />
 
                 <Space
@@ -216,7 +218,9 @@
                     android:layout_width="220dp"
                     android:layout_height="35dp"
                     android:background="@drawable/border_input"
-                    android:fontFamily="sans-serif-black"
+                    android:fontFamily="sans-serif-medium"
+                    android:gravity="center"
+                    android:paddingStart="15dp"
                     android:textColor="#000000" />
 
                 <Space
@@ -228,7 +232,9 @@
                     android:layout_width="220dp"
                     android:layout_height="35dp"
                     android:background="@drawable/border_input"
-                    android:fontFamily="sans-serif-black"
+                    android:fontFamily="sans-serif-medium"
+                    android:gravity="center"
+                    android:paddingStart="15dp"
                     android:textColor="#000000" />
 
                 <Space
@@ -240,7 +246,9 @@
                     android:layout_width="220dp"
                     android:layout_height="35dp"
                     android:background="@drawable/border_input"
-                    android:fontFamily="sans-serif-black"
+                    android:fontFamily="sans-serif-medium"
+                    android:gravity="center"
+                    android:paddingStart="15dp"
                     android:textColor="#000000" />
 
                 <Space
@@ -252,7 +260,9 @@
                     android:layout_width="220dp"
                     android:layout_height="35dp"
                     android:background="@drawable/border_input"
-                    android:fontFamily="sans-serif-black"
+                    android:fontFamily="sans-serif-medium"
+                    android:gravity="center"
+                    android:paddingStart="15dp"
                     android:textColor="#000000" />
 
                 <Space
@@ -264,7 +274,9 @@
                     android:layout_width="220dp"
                     android:layout_height="35dp"
                     android:background="@drawable/border_input"
-                    android:fontFamily="sans-serif-black"
+                    android:fontFamily="sans-serif-medium"
+                    android:gravity="center"
+                    android:paddingStart="15dp"
                     android:textColor="#000000" />
 
                 <Space
@@ -276,7 +288,9 @@
                     android:layout_width="220dp"
                     android:layout_height="35dp"
                     android:background="@drawable/border_input"
-                    android:fontFamily="sans-serif-black"
+                    android:fontFamily="sans-serif-medium"
+                    android:gravity="center"
+                    android:paddingStart="15dp"
                     android:textColor="#000000" />
 
                 <Space
@@ -288,7 +302,9 @@
                     android:layout_width="220dp"
                     android:layout_height="35dp"
                     android:background="@drawable/border_input"
-                    android:fontFamily="sans-serif-black"
+                    android:fontFamily="sans-serif-medium"
+                    android:gravity="center"
+                    android:paddingStart="15dp"
                     android:textColor="#000000" />
 
                 <Space

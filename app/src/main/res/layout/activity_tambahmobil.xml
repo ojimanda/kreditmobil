@@ -155,6 +155,7 @@
                         android:id="@+id/editTextTmbMobBrand"
                         android:layout_width="220dp"
                         android:layout_height="35dp"
+                        android:paddingStart="15dp"
                         android:layout_gravity="center"
                         android:background="@drawable/border_input" />
 
@@ -166,6 +167,7 @@
                         android:id="@+id/editTextTmbMobTipe"
                         android:layout_width="220dp"
                         android:layout_height="35dp"
+                        android:paddingStart="15dp"
                         android:layout_gravity="center"
                         android:background="@drawable/border_input" />
 
@@ -177,6 +179,7 @@
                         android:id="@+id/editTextTmbMobMerk"
                         android:layout_width="220dp"
                         android:layout_height="35dp"
+                        android:paddingStart="15dp"
                         android:layout_gravity="center"
                         android:background="@drawable/border_input" />
 
@@ -189,6 +192,7 @@
                         android:layout_width="220dp"
                         android:layout_height="35dp"
                         android:layout_gravity="center"
+                        android:paddingStart="15dp"
                         android:background="@drawable/border_input"
                         android:ems="10"
                         android:inputType="textPersonName" />
@@ -227,7 +231,7 @@
         android:id="@+id/textViewFooterTmbMob"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="140dp"
+        android:layout_marginTop="128dp"
         android:fontFamily="sans-serif-medium"
         android:text="+ Mobil"
         android:textColor="#FFFFFF"

@@ -18,7 +18,7 @@
         android:left="-45dp"
         android:right="-45dp"
         android:top="-300dp"
-        android:bottom="650dp"
+        android:bottom="600dp"
         >
         <bitmap
             android:src="@drawable/ellipse_20"

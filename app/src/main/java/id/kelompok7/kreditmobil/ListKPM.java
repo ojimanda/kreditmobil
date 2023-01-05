@@ -1,6 +1,9 @@
 package id.kelompok7.kreditmobil;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.ImageButton;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -27,11 +30,22 @@ public class ListKPM extends AppCompatActivity {
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
     private QuerySnapshot result;
     private List<ModelApprovalAdmin> element;
+    ImageButton backBtn;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_approval);
+        backBtn = (ImageButton) findViewById(R.id.backButtonListApproval);
+
+        backBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(ListKPM.this, AdminDashboard.class);
+                startActivity(intent);
+                finish();
+            }
+        });
 
         db.collection("pengajuan")
                 .get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
