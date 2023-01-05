@@ -15,7 +15,7 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="285dp">
+            android:layout_height="242dp">
 
             <ImageView
                 android:id="@+id/imageView7"
@@ -25,20 +25,19 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.029"
+                app:layout_constraintVertical_bias="0.0"
                 app:srcCompat="@drawable/_0943447_1" />
 
             <TextView
                 android:id="@+id/textView45"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="28dp"
+                android:layout_marginTop="8dp"
                 android:fontFamily="sans-serif-black"
                 android:text="Form Pengajuan Kredit Mobil"
                 android:textColor="#FFFFFF"
-                android:textSize="18sp"
+                android:textSize="20sp"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/imageView7" />
         </androidx.constraintlayout.widget.ConstraintLayout>
@@ -58,7 +57,7 @@
                     android:id="@+id/nikPengajuan"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
+                    android:layout_marginTop="32dp"
                     android:background="@drawable/border_input"
                     android:ems="10"
                     android:gravity="center"
@@ -66,6 +65,7 @@
                     android:inputType="number"
                     android:minHeight="35dp"
                     app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     tools:ignore="TouchTargetSizeCheck" />
@@ -89,7 +89,7 @@
                     android:id="@+id/npwpPengajuan"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="28dp"
+                    android:layout_marginTop="32dp"
                     android:background="@drawable/border_input"
                     android:ems="10"
                     android:gravity="center"
@@ -104,7 +104,7 @@
                     android:id="@+id/gajiPengajuan"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="28dp"
+                    android:layout_marginTop="32dp"
                     android:background="@drawable/border_input"
                     android:ems="10"
                     android:gravity="center"
@@ -119,11 +119,10 @@
                     android:id="@+id/btLanjut"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="24dp"
+                    android:layout_marginTop="32dp"
                     android:backgroundTint="@color/main"
                     android:text="Lanjutkan"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.5"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/gajiPengajuan" />
             </androidx.constraintlayout.widget.ConstraintLayout>

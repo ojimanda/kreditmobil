@@ -21,9 +21,9 @@
                 android:id="@+id/imageView22"
                 android:layout_width="148dp"
                 android:layout_height="146dp"
-                android:layout_marginTop="76dp"
+                android:layout_marginTop="20dp"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintHorizontal_bias="0.498"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:srcCompat="@drawable/lease" />
@@ -66,16 +66,16 @@
             android:paddingVertical="40dp">
 
             <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical"
+                android:layout_width="272dp"
+                android:layout_height="379dp"
                 android:gravity="center"
+                android:orientation="vertical"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.5" >
+                app:layout_constraintVertical_bias="0.5">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -85,20 +85,21 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="31dp"
-                        android:text="Brand Mobil"
+                        android:fontFamily="sans-serif-black"
                         android:gravity="center"
-                        android:textSize="18sp"
-                        android:fontFamily="sans-serif-black"/>
+                        android:text="Brand Mobil"
+                        android:textColor="#000000"
+                        android:textSize="18sp" />
 
                     <Spinner
                         android:id="@+id/spBrand"
-                        android:textAlignment="center"
-                        android:spinnerMode="dialog"
-                        android:gravity="center"
                         android:layout_width="match_parent"
-                        android:layout_gravity="center"
                         android:layout_height="30dp"
+                        android:layout_gravity="center"
                         android:background="@drawable/border_input"
+                        android:gravity="center"
+                        android:spinnerMode="dialog"
+                        android:textAlignment="center"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintHorizontal_bias="0.0"
@@ -116,18 +117,19 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="31dp"
-                        android:text="Tipe Mobil"
+                        android:fontFamily="sans-serif-black"
                         android:gravity="center"
-                        android:textSize="18sp"
-                        android:fontFamily="sans-serif-black"/>
+                        android:text="Tipe Mobil"
+                        android:textColor="#000000"
+                        android:textSize="18sp" />
 
                     <Spinner
                         android:id="@+id/spTipe"
                         android:layout_width="match_parent"
-                        android:spinnerMode="dialog"
                         android:layout_height="30dp"
-                        android:textAlignment="center"
                         android:background="@drawable/border_input"
+                        android:spinnerMode="dialog"
+                        android:textAlignment="center"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintHorizontal_bias="0.0"
@@ -145,18 +147,19 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="31dp"
-                        android:text="Merk Mobil"
+                        android:fontFamily="sans-serif-black"
                         android:gravity="center"
-                        android:textSize="18sp"
-                        android:fontFamily="sans-serif-black"/>
+                        android:text="Merk Mobil"
+                        android:textColor="#000000"
+                        android:textSize="18sp" />
 
                     <Spinner
                         android:id="@+id/spMerkMobil"
                         android:layout_width="match_parent"
                         android:layout_height="30dp"
-                        android:textAlignment="center"
-                        android:spinnerMode="dialog"
                         android:background="@drawable/border_input"
+                        android:spinnerMode="dialog"
+                        android:textAlignment="center"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintHorizontal_bias="0.0"
@@ -165,6 +168,7 @@
                         app:layout_constraintVertical_bias="0.132"
                         tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
                 </LinearLayout>
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="75dp"
@@ -176,15 +180,16 @@
                         android:fontFamily="sans-serif-black"
                         android:gravity="center"
                         android:text="Uang Muka (%)"
+                        android:textColor="#000000"
                         android:textSize="18sp" />
 
                     <Spinner
                         android:id="@+id/spUangMuka"
-                        android:textAlignment="center"
                         android:layout_width="match_parent"
                         android:layout_height="30dp"
-                        android:entries="@array/dp"
                         android:background="@drawable/border_input"
+                        android:entries="@array/dp"
+                        android:textAlignment="center"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintHorizontal_bias="0.0"
@@ -193,6 +198,7 @@
                         app:layout_constraintVertical_bias="0.132"
                         tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
                 </LinearLayout>
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="75dp"
@@ -204,15 +210,16 @@
                         android:fontFamily="sans-serif-black"
                         android:gravity="center"
                         android:text="Tenor (Bulan)"
+                        android:textColor="#000000"
                         android:textSize="18sp" />
 
                     <Spinner
                         android:id="@+id/spTenor"
-                        android:textAlignment="center"
-                        android:entries="@array/tenor"
                         android:layout_width="match_parent"
                         android:layout_height="30dp"
                         android:background="@drawable/border_input"
+                        android:entries="@array/tenor"
+                        android:textAlignment="center"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintHorizontal_bias="0.0"

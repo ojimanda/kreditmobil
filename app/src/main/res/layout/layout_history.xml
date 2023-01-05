@@ -28,11 +28,11 @@
                 app:srcCompat="@drawable/car" />
 
             <LinearLayout
-                android:layout_width="match_parent"
-                android:paddingStart="5dp"
+                android:layout_width="264dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:paddingStart="5dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -41,40 +41,44 @@
 
                     <TextView
                         android:id="@+id/history_brand"
-                        android:paddingBottom="5dp"
                         android:layout_width="match_parent"
-                        android:fontFamily="sans-serif-black"
                         android:layout_height="wrap_content"
-                        android:text="Brand Mobil" />
+                        android:fontFamily="sans-serif-black"
+                        android:paddingBottom="5dp"
+                        android:text="Brand Mobil"
+                        android:textColor="#000000" />
 
                     <TextView
                         android:id="@+id/history_merk"
                         android:layout_width="match_parent"
-                        android:fontFamily="sans-serif-black"
                         android:layout_height="wrap_content"
-                        android:text="Merk Mobil" />
+                        android:fontFamily="sans-serif-black"
+                        android:text="Merk Mobil"
+                        android:textColor="#000000" />
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:paddingTop="5dp"
                     android:layout_height="match_parent"
-                    android:orientation="vertical">
+                    android:orientation="vertical"
+                    android:paddingTop="5dp">
 
                     <TextView
                         android:id="@+id/history_uangmuka"
-                        android:paddingBottom="5dp"
                         android:layout_width="match_parent"
-                        android:fontFamily="sans-serif-black"
                         android:layout_height="wrap_content"
-                        android:text="Uang Muka" />
+                        android:fontFamily="sans-serif-black"
+                        android:paddingBottom="5dp"
+                        android:text="Uang Muka"
+                        android:textColor="#000000" />
 
                     <TextView
                         android:id="@+id/history_cicilan"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:fontFamily="sans-serif-black"
-                        android:text="Rp 1.000.000,00" />
+                        android:text="Rp 1.000.000,00"
+                        android:textColor="#000000" />
                 </LinearLayout>
             </LinearLayout>
         </LinearLayout>
