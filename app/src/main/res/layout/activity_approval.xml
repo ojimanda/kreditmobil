@@ -51,7 +51,7 @@
         app:srcCompat="@drawable/line_1" />
 
     <ImageButton
-        android:id="@+id/imageButton3"
+        android:id="@+id/btBackApproval"
         android:layout_width="39dp"
         android:layout_height="32dp"
         android:background="#FFFFFF"
@@ -99,6 +99,7 @@
         tools:layout_editor_absoluteX="1dp" />
 
     <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_admin_approval"
         android:layout_width="413dp"
         android:layout_height="317dp"
         app:layout_constraintBottom_toBottomOf="parent"
