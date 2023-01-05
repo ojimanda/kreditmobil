@@ -48,45 +48,67 @@
             android:layout_height="185dp"
             android:layout_gravity="center">
 
-            <EditText
-                android:id="@+id/etEmail"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:background="@drawable/border_input"
-                android:fontFamily="sans-serif-black"
-                android:gravity="center"
-                android:hint="Email"
-                android:inputType="textEmailAddress"
-                android:padding="6dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.5"
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/textInputLayout"
+                android:layout_width="330dp"
+                android:layout_height="50dp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                tools:ignore="TouchTargetSizeCheck" />
+                android:hint="Email"
+                app:hintTextAppearance="@style/TextLabel">
 
-            <EditText
-                android:id="@+id/etPassword"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="28dp"
-                android:background="@drawable/border_input"
-                android:fontFamily="sans-serif-black"
+
+                <EditText
+                    android:id="@+id/etEmail"
+                    android:layout_width="330dp"
+                    android:layout_height="50dp"
+                    android:background="@drawable/border_input"
+                    android:fontFamily="sans-serif-medium"
+                    android:gravity="center|start"
+                    android:inputType="textEmailAddress"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:ignore="TouchTargetSizeCheck" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="330dp"
+                android:layout_height="50dp"
                 android:gravity="center"
                 android:hint="Password"
-                android:inputType="textPassword"
-                android:padding="6dp"
+                app:hintTextAppearance="@style/TextLabel"
+                app:boxBackgroundColor="@color/white"
+                app:boxBackgroundMode="filled"
+                app:layout_constraintBottom_toTopOf="@+id/btLogin"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/etEmail"
-                tools:ignore="TouchTargetSizeCheck" />
+                app:layout_constraintTop_toBottomOf="@+id/textInputLayout"
+                app:passwordToggleEnabled="true">
+
+                <EditText
+                    android:id="@+id/etPassword"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:background="@drawable/border_input"
+                    android:fontFamily="sans-serif-medium"
+                    android:gravity="center|start"
+                    android:inputType="textPassword"
+                    android:textSize="16dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/etEmail"
+                    tools:ignore="TouchTargetSizeCheck" />
+            </com.google.android.material.textfield.TextInputLayout>
 
             <Button
-                android:layout_width="100dp"
-                android:layout_height="wrap_content"
-                android:backgroundTint="@color/main"
                 android:id="@+id/btLogin"
+                android:layout_width="112dp"
+                android:layout_height="48dp"
+                android:backgroundTint="@color/main"
                 android:text="Login"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
