@@ -3,11 +3,13 @@ package id.kelompok7.kreditmobil.fragment;
 import android.app.ProgressDialog;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -15,10 +17,21 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QuerySnapshot;
+import com.squareup.picasso.Picasso;
+
+import org.w3c.dom.Document;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.Objects;
 import java.util.UUID;
 
 import id.kelompok7.kreditmobil.R;
@@ -45,6 +58,8 @@ public class ReviewFragment extends Fragment {
     TextView txBrand, txMerk, txDP, txTenor, txCicilan;
     Button btHitung, btClear;
     ImageView imgCar;
+    Integer harga = 0;
+    String getUri;
     ProgressDialog progressDialog;
     FirebaseFirestore dbFF = FirebaseFirestore.getInstance();
 
@@ -104,38 +119,120 @@ public class ReviewFragment extends Fragment {
         txCicilan.setVisibility(View.INVISIBLE);
         txTenor.setVisibility(View.INVISIBLE);
         txDP.setVisibility(View.INVISIBLE);
+        imgCar = view.findViewById(R.id.imgCar);
 
         // set spinner value
 
         List<String> listBrand = new ArrayList<>();
 
+        dbFF.collection("mobil").get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                if(task.isSuccessful()) {
+                    for (DocumentSnapshot document: task.getResult()) {
+                        listBrand.add(document.getId());
+                    }
+                    ArrayAdapter<String> adapterBrand = new ArrayAdapter<String>(getContext(), android.R.layout.simple_spinner_dropdown_item,
+                            listBrand);
+                    adapterBrand.setDropDownViewResource(androidx.appcompat.R.layout.support_simple_spinner_dropdown_item);
+                    spBrand.setAdapter(adapterBrand);
 
-        listBrand.add("Honda");
-        listBrand.add("Mazda");
-        listBrand.add("Mitsubishi");
+//
+                }
+            }
+        });
 
-        ArrayAdapter<String> adapterBrand = new ArrayAdapter<String>(getContext(), android.R.layout.simple_spinner_dropdown_item,
-                listBrand);
-        adapterBrand.setDropDownViewResource(androidx.appcompat.R.layout.support_simple_spinner_dropdown_item);
-        spBrand.setAdapter(adapterBrand);
+        spBrand.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                dbFF.collection("mobil").document(spBrand.getSelectedItem().toString())
+                        .get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+                            @Override
+                            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                                List<String> listTipe = new ArrayList<>();
+                                if(task.isSuccessful()) {
+                                    Object res = task.getResult().get("tipe");
+                                    assert res != null;
+                                    String[] datas = res.toString().replace("[", "").replace("]", "").split(",");
+                                    for(String data: datas) {
+                                        String getTipe = data.split("-")[1];
+                                        listTipe.add(getTipe);
+                                        ArrayAdapter<String> adapterTipe = new ArrayAdapter<String>(getContext(), android.R.layout.simple_spinner_dropdown_item,
+                                                listTipe);
+                                        adapterTipe.setDropDownViewResource(androidx.appcompat.R.layout.support_simple_spinner_dropdown_item);
+                                        spTipe.setAdapter(adapterTipe);
 
-        // set value spinner tipe
 
-        List<String> listTipe = new ArrayList<>();
-        listTipe.add("SUV");
-        listTipe.add("Sedan");
+                                    }
+                                }
+                            }
+                        });
+            }
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
 
-        ArrayAdapter<String> adapterTipe = new ArrayAdapter<String>(getContext(), android.R.layout.simple_spinner_dropdown_item,
-                listTipe);
-        adapterTipe.setDropDownViewResource(androidx.appcompat.R.layout.support_simple_spinner_dropdown_item);
-        spTipe.setAdapter(adapterTipe);
+            }
+        });
 
         // set value spinner merk
 
-        List<String> listMerk = new ArrayList<>();
-        listMerk.add("SUV");
-        listMerk.add("Sedan");
 
+        spTipe.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                dbFF.collection("mobil").document(spBrand.getSelectedItem().toString())
+                        .collection(spTipe.getSelectedItem().toString()).get()
+                        .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                            @Override
+                            public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                                if(task.isSuccessful()) {
+                                    List<String> listMerk = new ArrayList<>();
+
+                                    QuerySnapshot result = task.getResult();
+                                    for(DocumentSnapshot doc: result) {
+                                        listMerk.add(doc.getId());
+
+                                        ArrayAdapter<String> adapterMerk = new ArrayAdapter<String>(getContext(), android.R.layout.simple_spinner_dropdown_item,
+                                                listMerk);
+                                        adapterMerk.setDropDownViewResource(androidx.appcompat.R.layout.support_simple_spinner_dropdown_item);
+                                        spMerk.setAdapter(adapterMerk);
+
+                                    }
+                                }
+                            }
+                        });
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
+
+        spMerk.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                dbFF.collection("mobil").document(spBrand.getSelectedItem().toString())
+                        .collection(spTipe.getSelectedItem().toString())
+                        .document(spMerk.getSelectedItem().toString()).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+                            @Override
+                            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                                if(task.isSuccessful()) {
+                                    DocumentSnapshot res = task.getResult();
+                                    harga = Integer.parseInt(Objects.requireNonNull(res.get("harga")).toString());
+                                }
+                            }
+                        });
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
+
+
+        db = new DBHelper(getContext());
 
         btClear.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -143,14 +240,6 @@ public class ReviewFragment extends Fragment {
 
             }
         });
-
-        ArrayAdapter<String> adapterMerk = new ArrayAdapter<String>(getContext(), android.R.layout.simple_spinner_dropdown_item,
-                listMerk);
-        adapterMerk.setDropDownViewResource(androidx.appcompat.R.layout.support_simple_spinner_dropdown_item);
-        spMerk.setAdapter(adapterMerk);
-
-        db = new DBHelper(getContext());
-
 
 
 
@@ -167,14 +256,34 @@ public class ReviewFragment extends Fragment {
         btHitung.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                if(harga == 0) {
+                    Toast.makeText(userDashboard, "Mohon lengkapi form", Toast.LENGTH_SHORT).show();
+                    return;
+                }
                 progressDialog.show();
                 String brand = spBrand.getSelectedItem().toString();
                 String merk = spMerk.getSelectedItem().toString();
                 String dp = spDP.getSelectedItem().toString();
                 String tenor = spTenor.getSelectedItem().toString();
-                String cicilan =cicilanPerBulan(300000000, Integer.parseInt(dp), Integer.parseInt(tenor));
+                String cicilan =cicilanPerBulan(harga, Integer.parseInt(dp), Integer.parseInt(tenor));
 
                 String uuid = UUID.randomUUID().toString().split("-")[0];
+
+                // get image
+
+                dbFF.collection("mobil").document(spBrand.getSelectedItem().toString())
+                        .collection(spTipe.getSelectedItem().toString())
+                        .document(spMerk.getSelectedItem().toString())
+                        .get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+                            @Override
+                            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                                if(task.isSuccessful()) {
+                                    getUri = Objects.requireNonNull(task.getResult().get("photoUri")).toString();
+                                    Picasso.get().load(getUri).into(imgCar);
+                                }
+                            }
+                        });
+
 
                 boolean insertSuccess = db.insertHistory(uuid, uid, brand, merk,dp, tenor, cicilan);
 
@@ -190,6 +299,7 @@ public class ReviewFragment extends Fragment {
                     txDP.setText(dp);
                     txTenor.setText(tenor);
                     txCicilan.setText(cicilan);
+                    System.out.println(getUri);
                 } else {
                     Toast.makeText(userDashboard, "Gagal menghitung data", Toast.LENGTH_SHORT).show();
                 }
