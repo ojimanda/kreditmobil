@@ -15,6 +15,8 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.firebase.firestore.FirebaseFirestore;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
@@ -44,6 +46,7 @@ public class ReviewFragment extends Fragment {
     Button btHitung, btClear;
     ImageView imgCar;
     ProgressDialog progressDialog;
+    FirebaseFirestore dbFF = FirebaseFirestore.getInstance();
 
     public ReviewFragment() {
         // Required empty public constructor
@@ -105,6 +108,8 @@ public class ReviewFragment extends Fragment {
         // set spinner value
 
         List<String> listBrand = new ArrayList<>();
+
+
         listBrand.add("Honda");
         listBrand.add("Mazda");
         listBrand.add("Mitsubishi");
