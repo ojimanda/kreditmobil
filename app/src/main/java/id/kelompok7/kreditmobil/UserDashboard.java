@@ -49,7 +49,6 @@ public class UserDashboard extends AppCompatActivity {
         setContentView(R.layout.activity_user_dashboard);
         Intent intent = getIntent();
         uid = intent.getStringExtra("uid");
-        Toast.makeText(this, uid, Toast.LENGTH_SHORT).show();
         setFragment(new MainFragment());
 
         toolbar = findViewById(R.id.toolbar);

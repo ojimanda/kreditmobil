@@ -58,28 +58,34 @@ public class HistoryPengajuan extends AppCompatActivity {
                 .whereEqualTo("pengajuanId", uid).get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                     @Override
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                        element = new ArrayList<>();
-                        result = task.getResult().getDocuments().get(0);
-                        System.out.println(result.toString());
-                        nama = result.get("nama").toString();
-                        nik = result.get("nik").toString();
-                        npwp = result.get("npwp").toString();
-                        gaji = result.get("gaji").toString();
-                        brand = result.get("brand").toString();
-                        tipe = result.get("tipe").toString();
-                        merk = result.get("merk").toString();
-                        dp = result.get("dp").toString();
-                        tenor = result.get("tenor").toString();
-                        cicilan = result.get("cicilan").toString();
-                        status = result.get("status").toString();
+                        if(task.isSuccessful()) {
+                            System.out.println(task.getResult().getDocuments().size());
+                            if(task.getResult().getDocuments().size() == 0) {
+                                Toast.makeText(HistoryPengajuan.this, "Anda belum mengajukan KPM", Toast.LENGTH_SHORT).show();
+                            } else {
+                                element = new ArrayList<>();
+                                result = task.getResult().getDocuments().get(0);
+                                nama = result.get("nama").toString();
+                                nik = result.get("nik").toString();
+                                npwp = result.get("npwp").toString();
+                                gaji = result.get("gaji").toString();
+                                brand = result.get("brand").toString();
+                                tipe = result.get("tipe").toString();
+                                merk = result.get("merk").toString();
+                                dp = result.get("dp").toString();
+                                tenor = result.get("tenor").toString();
+                                cicilan = result.get("cicilan").toString();
+                                status = result.get("status").toString();
 
-                        element.add(new ModelApprovalUser(nama, nik, npwp, gaji, brand,tipe, merk, dp, tenor, cicilan, status));
+                                element.add(new ModelApprovalUser(nama, nik, npwp, gaji, brand,tipe, merk, dp, tenor, cicilan, status));
 
-                        AdapterApprovalUser listAdapter= new AdapterApprovalUser(element, HistoryPengajuan.this);
-                        RecyclerView recyclerView = findViewById(R.id.rv_approval);
-                        recyclerView.setHasFixedSize(true);
-                        recyclerView.setLayoutManager(new LinearLayoutManager(HistoryPengajuan.this));
-                        recyclerView.setAdapter(listAdapter);
+                                AdapterApprovalUser listAdapter= new AdapterApprovalUser(element, HistoryPengajuan.this);
+                                RecyclerView recyclerView = findViewById(R.id.rv_approval);
+                                recyclerView.setHasFixedSize(true);
+                                recyclerView.setLayoutManager(new LinearLayoutManager(HistoryPengajuan.this));
+                                recyclerView.setAdapter(listAdapter);
+                            }
+                        }
                     }
                 }).addOnFailureListener(new OnFailureListener() {
                     @Override

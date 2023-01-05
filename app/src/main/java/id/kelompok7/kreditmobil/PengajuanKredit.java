@@ -31,12 +31,14 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 
 public class PengajuanKredit extends AppCompatActivity {
 
     Spinner spBrand, spTipe, spMerk, spDP, spTenor;
-    Button btPengajuan;
+    Button btPengajuan, btKembali;
     String brand, tipe, merk, dp, tenor, cicilan;
+    Integer harga;
     FirebaseFirestore db = FirebaseFirestore.getInstance();
     private QuerySnapshot result;
 
@@ -51,39 +53,151 @@ public class PengajuanKredit extends AppCompatActivity {
         spDP = findViewById(R.id.spUangMuka);
         spTenor = findViewById(R.id.spTenor);
         btPengajuan = findViewById(R.id.btPengajuan);
+        btKembali = findViewById(R.id.btKembali);
+
 
         // set value spinner brand
         List<String> listBrand = new ArrayList<>();
-        listBrand.add("Honda");
-        listBrand.add("Mazda");
-        listBrand.add("Mitsubishi");
 
-        ArrayAdapter<String> adapterBrand = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item,
-                listBrand);
-        adapterBrand.setDropDownViewResource(androidx.appcompat.R.layout.support_simple_spinner_dropdown_item);
-        spBrand.setAdapter(adapterBrand);
 
-        // set value spinner tipe
+        db.collection("mobil").get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                if(task.isSuccessful()) {
+                    for (DocumentSnapshot document: task.getResult()) {
+                        listBrand.add(document.getId());
+                    }
+                    ArrayAdapter<String> adapterBrand = new ArrayAdapter<String>(PengajuanKredit.this, android.R.layout.simple_spinner_dropdown_item,
+                            listBrand);
+                    adapterBrand.setDropDownViewResource(androidx.appcompat.R.layout.support_simple_spinner_dropdown_item);
+                    spBrand.setAdapter(adapterBrand);
 
-        List<String> listTipe = new ArrayList<>();
-        listTipe.add("SUV");
-        listTipe.add("Sedan");
+//
+                }
+            }
+        });
 
-        ArrayAdapter<String> adapterTipe = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item,
-                listTipe);
-        adapterTipe.setDropDownViewResource(androidx.appcompat.R.layout.support_simple_spinner_dropdown_item);
-        spTipe.setAdapter(adapterTipe);
+        spBrand.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                db.collection("mobil").document(spBrand.getSelectedItem().toString())
+                        .get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+                            @Override
+                            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                                List<String> listTipe = new ArrayList<>();
+                                if(task.isSuccessful()) {
+                                    Object res = task.getResult().get("tipe");
+                                    assert res != null;
+                                    String[] datas = res.toString().replace("[", "").replace("]", "").split(",");
+                                    for(String data: datas) {
+                                        String getTipe = data.split("-")[1];
+                                        listTipe.add(getTipe);
+                                        ArrayAdapter<String> adapterTipe = new ArrayAdapter<String>(PengajuanKredit.this, android.R.layout.simple_spinner_dropdown_item,
+                                                listTipe);
+                                        adapterTipe.setDropDownViewResource(androidx.appcompat.R.layout.support_simple_spinner_dropdown_item);
+                                        spTipe.setAdapter(adapterTipe);
+
+
+                                    }
+                                }
+                            }
+                        });
+            }
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
 
         // set value spinner merk
 
-        List<String> listMerk = new ArrayList<>();
-        listMerk.add("SUV");
-        listMerk.add("Sedan");
 
-        ArrayAdapter<String> adapterMerk = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item,
-                listMerk);
-        adapterMerk.setDropDownViewResource(androidx.appcompat.R.layout.support_simple_spinner_dropdown_item);
-        spMerk.setAdapter(adapterMerk);
+        spTipe.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                db.collection("mobil").document(spBrand.getSelectedItem().toString())
+                        .collection(spTipe.getSelectedItem().toString()).get()
+                        .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                            @Override
+                            public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                                if(task.isSuccessful()) {
+                                    List<String> listMerk = new ArrayList<>();
+
+                                    QuerySnapshot result = task.getResult();
+                                    for(DocumentSnapshot doc: result) {
+                                        listMerk.add(doc.getId());
+
+                                        ArrayAdapter<String> adapterMerk = new ArrayAdapter<String>(PengajuanKredit.this, android.R.layout.simple_spinner_dropdown_item,
+                                                listMerk);
+                                        adapterMerk.setDropDownViewResource(androidx.appcompat.R.layout.support_simple_spinner_dropdown_item);
+                                        spMerk.setAdapter(adapterMerk);
+
+                                    }
+                                }
+                            }
+                        });
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
+
+        spMerk.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                db.collection("mobil").document(spBrand.getSelectedItem().toString())
+                        .collection(spTipe.getSelectedItem().toString())
+                        .document(spMerk.getSelectedItem().toString()).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+                            @Override
+                            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                                if(task.isSuccessful()) {
+                                    DocumentSnapshot res = task.getResult();
+                                    harga = Integer.parseInt(Objects.requireNonNull(res.get("harga")).toString());
+                                }
+                            }
+                        });
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
+
+
+
+//        listBrand.add("Honda");
+//        listBrand.add("Mazda");
+//        listBrand.add("Mitsubishi");
+//
+//        ArrayAdapter<String> adapterBrand = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item,
+//                listBrand);
+//        adapterBrand.setDropDownViewResource(androidx.appcompat.R.layout.support_simple_spinner_dropdown_item);
+//        spBrand.setAdapter(adapterBrand);
+//
+//        // set value spinner tipe
+//
+//        List<String> listTipe = new ArrayList<>();
+//        listTipe.add("SUV");
+//        listTipe.add("Sedan");
+//
+//        ArrayAdapter<String> adapterTipe = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item,
+//                listTipe);
+//        adapterTipe.setDropDownViewResource(androidx.appcompat.R.layout.support_simple_spinner_dropdown_item);
+//        spTipe.setAdapter(adapterTipe);
+//
+//        // set value spinner merk
+//
+//        List<String> listMerk = new ArrayList<>();
+//        listMerk.add("SUV");
+//        listMerk.add("Sedan");
+//
+//        ArrayAdapter<String> adapterMerk = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item,
+//                listMerk);
+//        adapterMerk.setDropDownViewResource(androidx.appcompat.R.layout.support_simple_spinner_dropdown_item);
+//        spMerk.setAdapter(adapterMerk);
 
         List<String> listTenor = new ArrayList<>();
         listTenor.add("12");
@@ -104,6 +218,15 @@ public class PengajuanKredit extends AppCompatActivity {
         String gaji = intent.getStringExtra("gaji");
 
 
+        btKembali.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent1 = new Intent(PengajuanKredit.this, UserDashboard.class);
+                intent1.putExtra("uid", uid);
+                startActivity(intent1);
+            }
+        });
+
 
         btPengajuan.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -114,7 +237,7 @@ public class PengajuanKredit extends AppCompatActivity {
                 merk = spMerk.getSelectedItem().toString();
                 dp = spDP.getSelectedItem().toString();
                 tenor = spTenor.getSelectedItem().toString();
-                cicilan = cicilanPerBulan(300000000, Integer.parseInt(dp), Integer.parseInt(tenor));
+                cicilan = cicilanPerBulan(harga, Integer.parseInt(dp), Integer.parseInt(tenor));
 
                 AlertDialog.Builder builder = new AlertDialog.Builder(PengajuanKredit.this);
                 builder.setTitle("KONFIRMASI");
@@ -163,6 +286,9 @@ public class PengajuanKredit extends AppCompatActivity {
                                                                            public void onComplete(@NonNull Task<DocumentReference> task) {
                                                                                Toast.makeText(PengajuanKredit.this, "Data sudah diajukan", Toast.LENGTH_SHORT).show();
                                                                                Toast.makeText(PengajuanKredit.this, "Mohon ditunggu untuk diproses", Toast.LENGTH_SHORT).show();
+                                                                               Intent intent1 = new Intent(PengajuanKredit.this, UserDashboard.class);
+                                                                               intent1.putExtra("uid", uid);
+                                                                               startActivity(intent1);
                                                                            }
                                                                        }).addOnFailureListener(new OnFailureListener() {
                                                                            @Override
