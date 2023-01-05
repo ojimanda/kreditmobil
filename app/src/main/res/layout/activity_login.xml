@@ -54,6 +54,7 @@
                 android:layout_width="330dp"
                 android:layout_height="50dp"
                 android:hint="Email"
+                app:boxStrokeWidth="0dp"
                 app:hintTextAppearance="@style/TextLabel"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
@@ -61,8 +62,8 @@
 
                 <EditText
                     android:id="@+id/etEmail"
-                    android:layout_width="330dp"
-                    android:layout_height="50dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
                     android:background="@drawable/border_input"
                     android:fontFamily="sans-serif-medium"
                     android:gravity="center|start"
@@ -80,6 +81,7 @@
                 android:layout_height="50dp"
                 android:gravity="center"
                 android:hint="Password"
+                app:boxStrokeWidth="0dp"
                 app:boxBackgroundColor="@color/white"
                 app:boxBackgroundMode="filled"
                 app:hintTextAppearance="@style/TextLabel"

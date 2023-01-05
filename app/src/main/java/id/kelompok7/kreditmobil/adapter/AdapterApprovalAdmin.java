@@ -73,7 +73,7 @@ public class AdapterApprovalAdmin extends RecyclerView.Adapter<AdapterApprovalAd
             super(itemView);
             nama = itemView.findViewById(R.id.nameList);
             merk = itemView.findViewById(R.id.merkList);
-            btDetails = itemView.findViewById(R.id.btDetails);
+            btDetails = itemView.findViewById(R.id.btnDetailsListElementApproval);
         }
 
         public void bindData(ModelApprovalAdmin list) {

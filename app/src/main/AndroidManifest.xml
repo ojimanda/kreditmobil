@@ -46,13 +46,6 @@
                 android:value="" />
         </activity>
         <activity
-            android:name=".ListKPM"
-            android:exported="false">
-            <meta-data
-                android:name="android.app.lib_name"
-                android:value="" />
-        </activity>
-        <activity
             android:name=".PengajuanKredit"
             android:exported="true">
             <meta-data

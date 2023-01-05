@@ -32,7 +32,6 @@ public class ListKPM extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_approval);
-<<<<<<< Updated upstream
 
         db.collection("pengajuan")
                 .get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
@@ -50,7 +49,7 @@ public class ListKPM extends AppCompatActivity {
                                 }
 
                                 AdapterApprovalAdmin listAdapter= new AdapterApprovalAdmin(element, ListKPM.this);
-                                RecyclerView recyclerView = findViewById(R.id.rv_admin_approval);
+                                RecyclerView recyclerView = findViewById(R.id.recyclerListApproval);
                                 recyclerView.setHasFixedSize(true);
                                 recyclerView.setLayoutManager(new LinearLayoutManager(ListKPM.this));
                                 recyclerView.setAdapter(listAdapter);
@@ -58,8 +57,6 @@ public class ListKPM extends AppCompatActivity {
                         }
                     }
                 });
-=======
->>>>>>> Stashed changes
     }
 
 }

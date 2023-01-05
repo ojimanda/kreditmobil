@@ -11,24 +11,6 @@
         android:orientation="vertical"
         >
 
-        <androidx.appcompat.widget.Toolbar
-            android:id="@+id/toolbarReview"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/main"
-            android:gravity="left"
-            android:minHeight="?attr/actionBarSize"
-            android:theme="?attr/actionBarTheme">
-
-            <ImageButton
-                android:id="@+id/backButtonReview"
-                android:layout_width="48dp"
-                android:layout_height="48dp"
-                android:background="@color/main"
-                app:tint="@color/white"
-                app:srcCompat="@drawable/ic_baseline_arrow_back_24" />
-        </androidx.appcompat.widget.Toolbar>
-
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"

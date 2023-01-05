@@ -3,323 +3,6 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-<<<<<<< Updated upstream
-    android:layout_height="match_parent">
-
-    <ImageView
-        android:id="@+id/imageView24"
-        android:layout_width="757dp"
-        android:layout_height="334dp"
-        app:srcCompat="@drawable/ellipse_20"
-        tools:layout_editor_absoluteX="-173dp"
-        tools:layout_editor_absoluteY="-69dp" />
-
-    <Button
-        android:id="@+id/btDenied"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:backgroundTint="#FD0000"
-        android:fontFamily="sans-serif-black"
-        android:text="TOLAK"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.883"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.904" />
-
-    <TextView
-        android:id="@+id/approvalTenor"
-        android:layout_width="160dp"
-        android:layout_height="29dp"
-        android:background="@drawable/border_input"
-        android:fontFamily="sans-serif-black"
-        android:textColor="#000000"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.852"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.809" />
-
-    <TextView
-        android:id="@+id/textView33"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="sans-serif-black"
-        android:text="Jenis Mobil"
-        android:textColor="#000000"
-        android:textSize="16sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.146"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.698" />
-
-    <TextView
-        android:id="@+id/textView38"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="sans-serif-black"
-        android:text="Uang Muka"
-        android:textColor="#000000"
-        android:textSize="16sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.145"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.755" />
-
-    <TextView
-        android:id="@+id/textView37"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="sans-serif-black"
-        android:text="Tenor"
-        android:textColor="#000000"
-        android:textSize="16sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.13"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.812" />
-
-    <TextView
-        android:id="@+id/approvalBrand"
-        android:layout_width="160dp"
-        android:layout_height="29dp"
-        android:background="@drawable/border_input"
-        android:fontFamily="sans-serif-black"
-        android:textColor="#000000"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.852"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.638" />
-
-    <TextView
-        android:id="@+id/approvalJenis"
-        android:layout_width="160dp"
-        android:layout_height="29dp"
-        android:background="@drawable/border_input"
-        android:fontFamily="sans-serif-black"
-        android:textColor="#000000"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.852"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.695" />
-
-    <TextView
-        android:id="@+id/textView36"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="sans-serif-black"
-        android:text="Brand Mobil"
-        android:textColor="#000000"
-        android:textSize="16sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.148"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.641" />
-
-    <TextView
-        android:id="@+id/approvalDp"
-        android:layout_width="160dp"
-        android:layout_height="29dp"
-        android:background="@drawable/border_input"
-        android:fontFamily="sans-serif-black"
-        android:textColor="#000000"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.852"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.753" />
-
-    <TextView
-        android:id="@+id/approvalGaji"
-        android:layout_width="160dp"
-        android:layout_height="29dp"
-        android:background="@drawable/border_input"
-        android:fontFamily="sans-serif-black"
-        android:textColor="#000000"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.852"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.582" />
-
-    <TextView
-        android:id="@+id/approvalNpwp"
-        android:layout_width="160dp"
-        android:layout_height="29dp"
-        android:background="@drawable/border_input"
-        android:fontFamily="sans-serif-black"
-        android:textColor="#000000"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.852"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.527" />
-
-    <TextView
-        android:id="@+id/textView23"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="sans-serif-black"
-        android:text="Nama"
-        android:textColor="#000000"
-        android:textSize="16sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.131"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.473" />
-
-    <TextView
-        android:id="@+id/textView17"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="sans-serif-black"
-        android:text="NIK"
-        android:textColor="#000000"
-        android:textSize="16sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.132"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.417" />
-
-    <TextView
-        android:id="@+id/textView26"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="sans-serif-black"
-        android:text="Gaji"
-        android:textColor="#000000"
-        android:textSize="16sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.125"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.586" />
-
-    <TextView
-        android:id="@+id/textView25"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="sans-serif-black"
-        android:text="NPWP"
-        android:textColor="#000000"
-        android:textSize="16sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.13"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.531" />
-
-    <ImageButton
-        android:id="@+id/btBackApprove"
-        android:layout_width="39dp"
-        android:layout_height="32dp"
-        android:background="#FFFFFF"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.044"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.023"
-        app:srcCompat="@drawable/back" />
-
-    <ImageView
-        android:id="@+id/imageView19"
-        android:layout_width="151dp"
-        android:layout_height="170dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.028"
-        app:srcCompat="@drawable/book" />
-
-    <TextView
-        android:id="@+id/textView16"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="sans-serif-black"
-        android:text="Details Approve"
-        android:textColor="#FFFFFF"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.531"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.296" />
-
-    <TextView
-        android:id="@+id/approvalNik"
-        android:layout_width="160dp"
-        android:layout_height="29dp"
-        android:background="@drawable/border_input"
-        android:textColor="#000000"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.852"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.411"
-        android:fontFamily="sans-serif-black" />
-
-    <TextView
-        android:id="@+id/approvalNama"
-        android:layout_width="160dp"
-        android:layout_height="29dp"
-        android:background="@drawable/border_input"
-        android:fontFamily="sans-serif-black"
-        android:textColor="#000000"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.852"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.468" />
-
-    <Button
-        android:id="@+id/btApproved"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:backgroundTint="#1CD645"
-        android:fontFamily="sans-serif-black"
-        android:text="Terima"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.529"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.904" />
-
-    <ImageView
-        android:id="@+id/imageView20"
-        android:layout_width="411dp"
-        android:layout_height="157dp"
-        android:layout_marginTop="664dp"
-=======
     android:layout_height="match_parent"
     android:background="@drawable/background_user">
 
@@ -327,7 +10,6 @@
         android:layout_width="413dp"
         android:layout_height="821dp"
         android:orientation="vertical"
->>>>>>> Stashed changes
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -337,7 +19,7 @@
             android:layout_height="333dp">
 
             <ImageButton
-                android:id="@+id/imageButton5"
+                android:id="@+id/btnBackListDetail"
                 android:layout_width="48dp"
                 android:layout_height="48dp"
                 android:layout_alignParentStart="true"
@@ -354,8 +36,8 @@
                 android:layout_height="170dp"
                 android:layout_alignParentTop="true"
                 android:layout_alignParentEnd="true"
-                android:layout_marginTop="66dp"
-                android:layout_marginEnd="129dp"
+                android:layout_marginTop="47dp"
+                android:layout_marginEnd="136dp"
                 app:srcCompat="@drawable/book" />
 
             <TextView
@@ -364,8 +46,8 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentStart="true"
                 android:layout_alignParentTop="true"
-                android:layout_marginStart="140dp"
-                android:layout_marginTop="255dp"
+                android:layout_marginStart="135dp"
+                android:layout_marginTop="225dp"
                 android:fontFamily="sans-serif-black"
                 android:text="Details Approve"
                 android:textColor="#FFFFFF"
@@ -503,7 +185,7 @@
                     android:layout_height="20dp" />
 
                 <Button
-                    android:id="@+id/button5"
+                    android:id="@+id/btnDenyListDetail"
                     android:layout_width="125dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
@@ -518,7 +200,7 @@
                 android:orientation="vertical">
 
                 <TextView
-                    android:id="@+id/textView27"
+                    android:id="@+id/approvalNik"
                     android:layout_width="220dp"
                     android:layout_height="35dp"
                     android:background="@drawable/border_input"
@@ -530,7 +212,7 @@
                     android:layout_height="10dp" />
 
                 <TextView
-                    android:id="@+id/textView28"
+                    android:id="@+id/approvalNama"
                     android:layout_width="220dp"
                     android:layout_height="35dp"
                     android:background="@drawable/border_input"
@@ -542,7 +224,7 @@
                     android:layout_height="10dp" />
 
                 <TextView
-                    android:id="@+id/textView29"
+                    android:id="@+id/approvalNpwp"
                     android:layout_width="220dp"
                     android:layout_height="35dp"
                     android:background="@drawable/border_input"
@@ -554,7 +236,7 @@
                     android:layout_height="10dp" />
 
                 <TextView
-                    android:id="@+id/textView30"
+                    android:id="@+id/approvalGaji"
                     android:layout_width="220dp"
                     android:layout_height="35dp"
                     android:background="@drawable/border_input"
@@ -566,7 +248,7 @@
                     android:layout_height="10dp" />
 
                 <TextView
-                    android:id="@+id/textView34"
+                    android:id="@+id/approvalBrand"
                     android:layout_width="220dp"
                     android:layout_height="35dp"
                     android:background="@drawable/border_input"
@@ -578,7 +260,7 @@
                     android:layout_height="10dp" />
 
                 <TextView
-                    android:id="@+id/textView35"
+                    android:id="@+id/approvalJenis"
                     android:layout_width="220dp"
                     android:layout_height="35dp"
                     android:background="@drawable/border_input"
@@ -590,7 +272,7 @@
                     android:layout_height="10dp" />
 
                 <TextView
-                    android:id="@+id/textView32"
+                    android:id="@+id/approvalDp"
                     android:layout_width="220dp"
                     android:layout_height="35dp"
                     android:background="@drawable/border_input"
@@ -602,7 +284,7 @@
                     android:layout_height="10dp" />
 
                 <TextView
-                    android:id="@+id/textView31"
+                    android:id="@+id/approvalTenor"
                     android:layout_width="220dp"
                     android:layout_height="35dp"
                     android:background="@drawable/border_input"
@@ -614,7 +296,7 @@
                     android:layout_height="20dp" />
 
                 <Button
-                    android:id="@+id/button4"
+                    android:id="@+id/btnApproveListDetail"
                     android:layout_width="125dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"

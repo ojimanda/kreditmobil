@@ -153,7 +153,8 @@
             android:backgroundTint="#00B2FF"
             app:layout_constraintStart_toEndOf="@+id/textViewHeaderAdmin"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/ic_baseline_logout_24" />
+            app:srcCompat="@drawable/ic_baseline_logout_24"
+            app:tint="@color/white" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
