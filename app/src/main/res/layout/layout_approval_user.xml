@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:cardCornerRadius="20dp"
+    app:cardUseCompatPadding="true"
+    android:elevation="40dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="15dp"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="147dp"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Nama" />
+
+            <TextView
+                android:id="@+id/textView4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="NIK" />
+
+            <TextView
+                android:id="@+id/textView5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="NPWP" />
+
+            <TextView
+                android:id="@+id/textView10"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Brand Mobil" />
+
+            <TextView
+                android:id="@+id/textView11"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Tipe Mobil" />
+
+            <TextView
+                android:id="@+id/textView52"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Merk Mobil" />
+
+            <TextView
+                android:id="@+id/textView13"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Gaji" />
+
+            <TextView
+                android:id="@+id/textView18"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Tenor (Bulan)" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Uang Muka" />
+
+            <TextView
+                android:id="@+id/textView20"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Cicilan (per-Bulan)" />
+
+            <TextView
+                android:id="@+id/textView21"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Status" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/idNama"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Nama" />
+
+            <TextView
+                android:id="@+id/idNIK"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="NIK" />
+
+            <TextView
+                android:id="@+id/idNPWP"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="NPWP" />
+
+            <TextView
+                android:id="@+id/idBrand"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Brand Mobil" />
+
+            <TextView
+                android:id="@+id/idTipe"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Tipe Mobil" />
+
+            <TextView
+                android:id="@+id/idMerk"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="TextView" />
+
+            <TextView
+                android:id="@+id/idGaji"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Gaji" />
+
+            <TextView
+                android:id="@+id/idTenor"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Tenor (Bulan)" />
+
+            <TextView
+                android:id="@+id/idDP"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="TextView" />
+
+            <TextView
+                android:id="@+id/idCicilan"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Cicilan (per-Bulan)" />
+
+            <TextView
+                android:id="@+id/idStatus"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Status"
+                android:textStyle="bold" />
+        </LinearLayout>
+    </LinearLayout>
+</androidx.cardview.widget.CardView>

@@ -1,7 +1,5 @@
 package id.kelompok7.kreditmobil.fragment;
 
-import android.media.Image;
-import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -14,7 +12,6 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
@@ -24,8 +21,8 @@ import com.google.firebase.storage.FirebaseStorage;
 import java.util.ArrayList;
 import java.util.List;
 
-import id.kelompok7.kreditmobil.ListAdapter;
-import id.kelompok7.kreditmobil.ListElement;
+import id.kelompok7.kreditmobil.adapter.ListAdapter;
+import id.kelompok7.kreditmobil.model.ListElement;
 import id.kelompok7.kreditmobil.R;
 
 ///**

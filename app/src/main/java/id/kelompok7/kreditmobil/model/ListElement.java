@@ -1,4 +1,4 @@
-package id.kelompok7.kreditmobil;
+package id.kelompok7.kreditmobil.model;
 
 
 import android.net.Uri;

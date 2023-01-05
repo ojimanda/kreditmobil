@@ -105,6 +105,12 @@ public class UserDashboard extends AppCompatActivity {
                         Objects.requireNonNull(getSupportActionBar()).setDisplayShowTitleEnabled(false);
                         setFragment(new PengajuanFragment());
                         break;
+                    case R.id.nav_list:
+                        Intent intent1 = new Intent(UserDashboard.this, HistoryPengajuan.class);
+                        intent1.putExtra("uid", uid);
+                        startActivity(intent1);
+                        finish();
+                        break;
                     case R.id.nav_history:
                         Toast.makeText(UserDashboard.this, "History", Toast.LENGTH_SHORT).show();
                         Objects.requireNonNull(getSupportActionBar()).setDisplayShowTitleEnabled(false);

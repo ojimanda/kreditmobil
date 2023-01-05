@@ -41,7 +41,7 @@ public class ReviewFragment extends Fragment {
     DBHelper db;
     Spinner spBrand, spTipe, spMerk, spDP, spTenor;
     TextView txBrand, txMerk, txDP, txTenor, txCicilan;
-    Button btHitung;
+    Button btHitung, btClear;
     ImageView imgCar;
     ProgressDialog progressDialog;
 
@@ -90,6 +90,7 @@ public class ReviewFragment extends Fragment {
         spDP = view.findViewById(R.id.dpSp);
         spTenor = view.findViewById(R.id.tenorSp);
         btHitung = view.findViewById(R.id.btHitung);
+        btClear = view.findViewById(R.id.btClear);
         txBrand = view.findViewById(R.id.txBrand);
         txMerk = view.findViewById(R.id.txMerk);
         txCicilan = view.findViewById(R.id.txCicilan);
@@ -129,6 +130,14 @@ public class ReviewFragment extends Fragment {
         List<String> listMerk = new ArrayList<>();
         listMerk.add("SUV");
         listMerk.add("Sedan");
+
+
+        btClear.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
 
         ArrayAdapter<String> adapterMerk = new ArrayAdapter<String>(getContext(), android.R.layout.simple_spinner_dropdown_item,
                 listMerk);
@@ -180,6 +189,22 @@ public class ReviewFragment extends Fragment {
                     Toast.makeText(userDashboard, "Gagal menghitung data", Toast.LENGTH_SHORT).show();
                 }
                 progressDialog.dismiss();
+            }
+        });
+
+        btClear.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                spBrand.setSelection(0);
+                spMerk.setSelection(0);
+                spTipe.setSelection(0);
+                spDP.setSelection(0);
+                spTenor.setSelection(0);
+                txCicilan.setText("");
+                txTenor.setText("");
+                txDP.setText("");
+                txMerk.setText("");
+                txBrand.setText("");
             }
         });
 

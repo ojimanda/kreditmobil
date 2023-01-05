@@ -1,4 +1,4 @@
-package id.kelompok7.kreditmobil;
+package id.kelompok7.kreditmobil.adapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -11,10 +11,12 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.firebase.storage.FirebaseStorage;
-import com.google.firebase.storage.StorageReference;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
+
+import id.kelompok7.kreditmobil.model.ListElement;
+import id.kelompok7.kreditmobil.R;
 
 public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
 
