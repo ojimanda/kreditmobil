@@ -85,6 +85,16 @@ public class PengajuanKredit extends AppCompatActivity {
         adapterMerk.setDropDownViewResource(androidx.appcompat.R.layout.support_simple_spinner_dropdown_item);
         spMerk.setAdapter(adapterMerk);
 
+        List<String> listTenor = new ArrayList<>();
+        listTenor.add("12");
+        listTenor.add("24");
+        listTenor.add("36");
+
+        ArrayAdapter<String> adapterTenor = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item,
+                listTenor);
+        adapterTenor.setDropDownViewResource(androidx.appcompat.R.layout.support_simple_spinner_dropdown_item);
+        spTenor.setAdapter(adapterTenor);
+
 
         Intent intent = getIntent();
         String uid = intent.getStringExtra("uid");

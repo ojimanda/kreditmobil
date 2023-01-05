@@ -3,6 +3,7 @@ package id.kelompok7.kreditmobil.fragment;
 import android.content.Intent;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
@@ -10,6 +11,16 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
+
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 import id.kelompok7.kreditmobil.PengajuanKredit;
 import id.kelompok7.kreditmobil.R;
@@ -31,6 +42,8 @@ public class PengajuanFragment extends Fragment {
     private String mParam1;
     private String mParam2;
     private TextView txNama, txNIK, txNPWP, txgaji;
+    private FirebaseFirestore db = FirebaseFirestore.getInstance();
+    private List<String> brandMobil;
     private Button btNext;
 
     public PengajuanFragment() {
@@ -70,6 +83,7 @@ public class PengajuanFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.activity_pengajuan, container, false);
 
+
         // initialize variable
         txNama = view.findViewById(R.id.namaPengajuan);
         txNIK = view.findViewById(R.id.nikPengajuan);
@@ -102,7 +116,7 @@ public class PengajuanFragment extends Fragment {
                     if (nik.length() != 16) {
                         txNIK.setError("NIK yang anda masukkan salah");
                     } else if (npwp.length() != 16) {
-                        txNIK.setError("NPWP yang anda masukkan salah");
+                        txNPWP.setError("NPWP yang anda masukkan salah");
                     } else {
                         Intent intent = new Intent(getContext(), PengajuanKredit.class);
                         intent.putExtra("uid", uid);
