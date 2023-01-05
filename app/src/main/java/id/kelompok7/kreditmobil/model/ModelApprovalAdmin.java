@@ -27,6 +27,7 @@ public class ModelApprovalAdmin {
         this.id = id;
     }
 
+
     public String getNama() {
         return nama;
     }

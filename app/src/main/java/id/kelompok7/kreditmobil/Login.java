@@ -71,23 +71,6 @@ public class Login extends AppCompatActivity {
         });
 
 
-        db.collection("mobil").document("honda")
-                .get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
-                    @Override
-                    public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-                        List<String> listTipe = new ArrayList<>();
-                        if(task.isSuccessful()) {
-                            Object res = task.getResult().get("tipe");
-                            assert res != null;
-                            String[] datas = res.toString().replace("[", "").replace("]", "").split(",");
-                            for(String data: datas) {
-                                System.out.println(data);
-                            }
-                        }
-                    }
-                });
-
-
 
 
         btLogin.setOnClickListener(new View.OnClickListener() {
