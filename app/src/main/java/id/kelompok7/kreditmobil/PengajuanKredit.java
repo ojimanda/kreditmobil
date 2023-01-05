@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.Spinner;
 import android.widget.Toast;
 
@@ -287,8 +288,6 @@ public class PengajuanKredit extends AppCompatActivity {
                                                                                Toast.makeText(PengajuanKredit.this, "Data sudah diajukan", Toast.LENGTH_SHORT).show();
                                                                                Toast.makeText(PengajuanKredit.this, "Mohon ditunggu untuk diproses", Toast.LENGTH_SHORT).show();
                                                                                Intent intent1 = new Intent(PengajuanKredit.this, UserDashboard.class);
-                                                                               intent1.putExtra("uid", uid);
-                                                                               startActivity(intent1);
                                                                            }
                                                                        }).addOnFailureListener(new OnFailureListener() {
                                                                            @Override

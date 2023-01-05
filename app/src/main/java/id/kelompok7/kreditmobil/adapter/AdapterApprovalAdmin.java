@@ -71,8 +71,8 @@ public class AdapterApprovalAdmin extends RecyclerView.Adapter<AdapterApprovalAd
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            nama = itemView.findViewById(R.id.nameList);
-            merk = itemView.findViewById(R.id.merkList);
+            nama = itemView.findViewById(R.id.nameListElementApproval);
+            merk = itemView.findViewById(R.id.merkListElementApproval);
             btDetails = itemView.findViewById(R.id.btnDetailsListElementApproval);
         }
 
