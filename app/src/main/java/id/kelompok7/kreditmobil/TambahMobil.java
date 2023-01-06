@@ -1,6 +1,7 @@
 package id.kelompok7.kreditmobil;
 
 import android.app.ProgressDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
@@ -20,6 +21,7 @@ import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.gms.tasks.Continuation;
@@ -49,6 +51,7 @@ public class TambahMobil extends AppCompatActivity {
     ImageView picMob;
     ImageButton backBtn;
     Button saveBtn, chooseBtn;
+    String username;
     private Uri filePath;
     private final int PICK_IMAGE_REQUEST = 22;
     private FirebaseStorage storage = FirebaseStorage.getInstance();
@@ -61,6 +64,7 @@ public class TambahMobil extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tambahmobil);
+        username = getIntent().getStringExtra("username");
 
         etBrand = (EditText) findViewById(R.id.editTextTmbMobBrand);
         etTipe = (EditText) findViewById(R.id.editTextTmbMobTipe);
@@ -83,7 +87,7 @@ public class TambahMobil extends AppCompatActivity {
         backBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(TambahMobil.this, AdminDashboard.class));
+                startActivity(new Intent(TambahMobil.this, AdminDashboard.class).putExtra("username", username));
                 finish();
             }
         });
@@ -134,6 +138,7 @@ public class TambahMobil extends AppCompatActivity {
                             String harga = getHarga.toLowerCase();
                             Uri downloadUri = task.getResult();
                             saveData(brand, tipe, merk, harga, downloadUri);
+                            progressDialog.dismiss();
                         }
                     });
                 }
@@ -226,11 +231,11 @@ public class TambahMobil extends AppCompatActivity {
                                 db.collection("mobil").document(brand).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
                                     @Override
                                     public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-                                        if(task.isSuccessful()) {
+                                        if (task.isSuccessful()) {
                                             Object result = task.getResult().get("tipe");
                                             System.out.println(result);
-                                            if(result == null) {
-                                                Map<String, Object> doc =  new HashMap<>();
+                                            if (result == null) {
+                                                Map<String, Object> doc = new HashMap<>();
                                                 ArrayList<String> arrayList = new ArrayList<>();
                                                 arrayList.add(value);
                                                 doc.put("tipe", arrayList);
@@ -239,16 +244,42 @@ public class TambahMobil extends AppCompatActivity {
                                                         .addOnSuccessListener(new OnSuccessListener<Void>() {
                                                             @Override
                                                             public void onSuccess(Void unused) {
-                                                                System.out.println("SUCCESS ADD FIELD");
+                                                                AlertDialog.Builder builder = new AlertDialog.Builder(TambahMobil.this);
+                                                                builder.setTitle("Success");
+                                                                builder.setMessage("Berhasil menambahkan mobil");
+                                                                builder.setCancelable(true);
+                                                                builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                                                                    @Override
+                                                                    public void onClick(DialogInterface dialog, int which) {
+                                                                        startActivity(new Intent(TambahMobil.this, AdminDashboard.class).putExtra("username", username));
+                                                                        finish();
+                                                                    }
+                                                                });
+                                                                AlertDialog alert = builder.create();
+                                                                alert.show();
                                                             }
                                                         });
                                             } else {
                                                 String[] newRes = result.toString().replace("[", "").replace("]", "").split(",");
+//<<<<<<< HEAD
                                                 ArrayList<String> arrayList = new ArrayList<>(Arrays.asList(newRes));
                                                 arrayList.add(value);
                                                 DocumentReference doc = db.collection("mobil").document(brand);
                                                 doc.update("tipe", FieldValue.arrayUnion(value));
                                                 System.out.println("SUCCESS UPDATE DATA");
+                                                AlertDialog.Builder builder = new AlertDialog.Builder(TambahMobil.this);
+                                                builder.setTitle("Success");
+                                                builder.setMessage("Berhasil Update mobil");
+                                                builder.setCancelable(true);
+                                                builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                                                    @Override
+                                                    public void onClick(DialogInterface dialog, int which) {
+                                                        startActivity(new Intent(TambahMobil.this, AdminDashboard.class).putExtra("username", username));
+                                                        finish();
+                                                    }
+                                                });
+                                                AlertDialog alert = builder.create();
+                                                alert.show();
 //                                                System.out.println(newRes);
 //                                                Map<String, Object> doc =  new HashMap<>();
 //                                                ArrayList<String> data = new ArrayList<>();
@@ -265,29 +296,78 @@ public class TambahMobil extends AppCompatActivity {
 //                                                                System.out.println("SUCCESS UPDATE DATA");
 //                                                            }
 //                                                        });
+//=======
+//                                                System.out.println(newRes);
+//                                                Map<String, Object> doc = new HashMap<>();
+//                                                ArrayList<String> data = new ArrayList<>();
+//                                                for (String res : newRes) {
+//                                                    data.add(res);
+//                                                }
+//                                                data.add(value);
+//                                                doc.put("tipe", data);
+//                                                db.collection("mobil").document(brand)
+//                                                        .update("tipe", doc)
+//                                                        .addOnSuccessListener(new OnSuccessListener<Void>() {
+//                                                            @Override
+//                                                            public void onSuccess(Void unused) {
+//
+//                                                            }
+//                                                        });
+//>>>>>>> ab019badfd30296a53b57946be37e748fb111aa7
                                             }
                                         }
                                     }
                                 }).addOnFailureListener(new OnFailureListener() {
                                     @Override
                                     public void onFailure(@NonNull Exception e) {
-                                        System.out.println("RES: gaada");
+                                        AlertDialog.Builder builder = new AlertDialog.Builder(TambahMobil.this);
+                                        builder.setTitle("Fail");
+                                        builder.setMessage("Gagal menambahkan mobil");
+                                        builder.setCancelable(true);
+                                        builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                                            @Override
+                                            public void onClick(DialogInterface dialog, int which) {
+                                            }
+                                        });
+                                        AlertDialog alert = builder.create();
+                                        alert.show();
                                     }
                                 });
 
-                                Toast.makeText(TambahMobil.this, "Berhasil menambahkan mobil", Toast.LENGTH_SHORT).show();
-                                progressDialog.dismiss();
-                                startActivity(new Intent(TambahMobil.this, AdminDashboard.class));
-                                finish();
-
+//                                db.collection("mobil").document(brand)
+//                                        .get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+//                                            @Override
+//                                            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+//                                                if (task.isSuccessful()) {
+//                                                    if (task.getResult().get("tipe") != null && task.getResult().exists()) {
+//                                                        db.collection("mobil").document(brand)
+//                                                                .get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+//                                                                    @Override
+//                                                                    public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+//                                                                        Object res = task.getResult().get("tipe");
+//                                                                        assert res != null;
+//                                                                        String[] data = res.toString().replace("[", "").replace("]", "").split(",");
+//                                                                        ArrayList<String> arrayList = new ArrayList<>(Arrays.asList(data));
+//                                                                        if (!arrayList.contains(value)) {
+//                                                                            DocumentReference doc = db.collection("mobil").document(brand);
+//                                                                            doc.update("tipe", FieldValue.arrayUnion(value));
+//                                                                        }
+//                                                                    }
+//                                                                });
+//                                                    } else {
+//                                                        DocumentReference doc = db.collection("mobil").document(brand);
+//                                                        doc.update("tipe", FieldValue.arrayUnion(value));
+//                                                    }
+//                                                }
+//                                            }
+//                                        }).addOnFailureListener(new OnFailureListener() {
+//                                            @Override
+//                                            public void onFailure(@NonNull Exception e) {
+//
+//                                            }
+//                                        });
                             }
-                        })
-                .addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        Toast.makeText(TambahMobil.this, "Gagal menambahkan list mobil", Toast.LENGTH_SHORT).show();
-                        progressDialog.dismiss();
-                    }
-                });
+                        });
+
     }
 }

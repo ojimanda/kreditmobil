@@ -1,6 +1,7 @@
 package id.kelompok7.kreditmobil;
 
 import android.app.ProgressDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -11,6 +12,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -88,10 +90,20 @@ public class DetailApproval extends AppCompatActivity {
                         .addOnSuccessListener(new OnSuccessListener<Void>() {
                             @Override
                             public void onSuccess(Void unused) {
-                                Toast.makeText(DetailApproval.this, "Pengajuan diterima", Toast.LENGTH_SHORT).show();
-                                startActivity(new Intent(DetailApproval.this, ListKPM.class));
-                                finish();
                                 pDialog.dismiss();
+                                AlertDialog.Builder builder = new AlertDialog.Builder(DetailApproval.this);
+                                builder.setTitle("Status Pengajuan");
+                                builder.setMessage("Pengajuan diterima");
+                                builder.setCancelable(true);
+                                builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialog, int which) {
+                                        startActivity(new Intent(DetailApproval.this, ListKPM.class));
+                                        finish();
+                                    }
+                                });
+                                AlertDialog alert = builder.create();
+                                alert.show();
                             }
                         });
             }
@@ -107,10 +119,20 @@ public class DetailApproval extends AppCompatActivity {
                         .addOnSuccessListener(new OnSuccessListener<Void>() {
                             @Override
                             public void onSuccess(Void unused) {
-                                Toast.makeText(DetailApproval.this, "Pengajuan ditolak", Toast.LENGTH_SHORT).show();
-                                startActivity(new Intent(DetailApproval.this, ListKPM.class));
-                                finish();
                                 pDialog.dismiss();
+                                AlertDialog.Builder builder = new AlertDialog.Builder(DetailApproval.this);
+                                builder.setTitle("Status Pengajuan");
+                                builder.setMessage("Pengajuan ditolak");
+                                builder.setCancelable(true);
+                                builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialog, int which) {
+                                        startActivity(new Intent(DetailApproval.this, ListKPM.class));
+                                        finish();
+                                    }
+                                });
+                                AlertDialog alert = builder.create();
+                                alert.show();
                             }
                         });
             }
