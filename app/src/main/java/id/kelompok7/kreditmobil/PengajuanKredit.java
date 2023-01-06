@@ -8,6 +8,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.Toast;
 
@@ -37,7 +38,8 @@ import java.util.Objects;
 public class PengajuanKredit extends AppCompatActivity {
 
     Spinner spBrand, spTipe, spMerk, spDP, spTenor;
-    Button btPengajuan, btKembali;
+    Button btPengajuan;
+    ImageView btKembali;
     String brand, tipe, merk, dp, tenor, cicilan;
     Integer harga;
     FirebaseFirestore db = FirebaseFirestore.getInstance();

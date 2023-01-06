@@ -176,6 +176,7 @@ public class TambahMobil extends AppCompatActivity {
         mobil.put("photoUri", image);
 
         String value = brand+"-"+tipe;
+        System.out.println(value);
 
         db.collection("mobil").document(brand).collection(tipe).document(merk).set(mobil)
                         .addOnSuccessListener(new OnSuccessListener<Void>() {
@@ -183,39 +184,91 @@ public class TambahMobil extends AppCompatActivity {
                             public void onSuccess(Void unused) {
                                 db.collection("listMobil").document(merk).set(listMobil);
 
-                                db.collection("mobil").document(brand)
-                                        .get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
-                                            @Override
-                                            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-                                                if(task.isSuccessful()) {
-                                                    if(task.getResult().get("tipe") != null && task.getResult().exists()) {
-                                                        db.collection("mobil").document(brand)
-                                                                .get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
-                                                                    @Override
-                                                                    public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-                                                Object res = task.getResult().get("tipe");
-                                                assert res != null;
-                                                String[] data = res.toString().replace("[", "").replace("]", "").split(",");
-                                                ArrayList<String> arrayList = new ArrayList<>(Arrays.asList(data));
-                                                arrayList.add("mazda-new");
-                                                if(!arrayList.contains(value)){
-                                                    DocumentReference doc = db.collection("mobil").document(brand);
-                                                    doc.update("tipe", FieldValue.arrayUnion(value));
-                                                }
-                                                                    }
-                                                                });
-                                                    } else {
-                                                        DocumentReference doc = db.collection("mobil").document("mazda");
-                                                        doc.update("tipe", FieldValue.arrayUnion(value));
-                                                    }
-                                                }
-                                            }
-                                        }).addOnFailureListener(new OnFailureListener() {
-                                            @Override
-                                            public void onFailure(@NonNull Exception e) {
+//                                db.collection("mobil").document(brand)
+//                                        .get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+//                                            @Override
+//                                            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+//                                                if(task.isSuccessful()) {
+//                                                    System.out.println(task.getResult().get("tipe"));
+//                                                    if(task.getResult().get("tipe") != null
+////                                                            && task.getResult().exists()
+//                                                    ) {
+//                                                        db.collection("mobil").document(brand)
+//                                                                .get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+//                                                                    @Override
+//                                                                    public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+//                                                Object res = task.getResult().get("tipe");
+//                                                assert res != null;
+//                                                String[] data = res.toString().replace("[", "").replace("]", "").split(",");
+//
+//                                                ArrayList<String> arrayList = new ArrayList<>(Arrays.asList(data));
+//                                                if(!arrayList.contains(value)){
+//                                                    DocumentReference doc = db.collection("mobil").document(brand);
+//                                                    doc.update("tipe", FieldValue.arrayUnion(value));
+//                                                }
+//                                                                    }
+//                                                                });
+//                                                    } else {
+//                                                        DocumentReference doc = db.collection("mobil").document(brand);
+//                                                        doc.update("tipe", FieldValue.arrayUnion(value));
+//                                                    }
+//                                                }
+//                                            }
+//                                        }).addOnFailureListener(new OnFailureListener() {
+//                                            @Override
+//                                            public void onFailure(@NonNull Exception e) {
+//                                                System.out.println("ERROR");
+//                                                DocumentReference doc = db.collection("mobil").document(brand);
+//                                                doc.update("tipe", FieldValue.arrayUnion(value));
+//                                            }
+//                                        });
 
+                                db.collection("mobil").document(brand).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+                                    @Override
+                                    public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                                        if(task.isSuccessful()) {
+                                            Object result = task.getResult().get("tipe");
+                                            System.out.println(result);
+                                            if(result == null) {
+                                                Map<String, Object> doc =  new HashMap<>();
+                                                ArrayList<String> arrayList = new ArrayList<>();
+                                                arrayList.add(value);
+                                                doc.put("tipe", arrayList);
+                                                db.collection("mobil").document(brand)
+                                                        .set(doc)
+                                                        .addOnSuccessListener(new OnSuccessListener<Void>() {
+                                                            @Override
+                                                            public void onSuccess(Void unused) {
+                                                                System.out.println("SUCCESS ADD FIELD");
+                                                            }
+                                                        });
+                                            } else {
+                                                String[] newRes = result.toString().replace("[", "").replace("]", "").split(",");
+                                                System.out.println(newRes);
+                                                Map<String, Object> doc =  new HashMap<>();
+                                                ArrayList<String> data = new ArrayList<>();
+                                                for(String res: newRes) {
+                                                    data.add(res);
+                                                }
+                                                data.add(value);
+                                                doc.put("tipe", data);
+                                                db.collection("mobil").document(brand)
+                                                        .update("tipe", doc)
+                                                        .addOnSuccessListener(new OnSuccessListener<Void>() {
+                                                            @Override
+                                                            public void onSuccess(Void unused) {
+                                                                System.out.println("SUCCESS UPDATE DATA");
+                                                            }
+                                                        });
                                             }
-                                        });
+                                        }
+                                    }
+                                }).addOnFailureListener(new OnFailureListener() {
+                                    @Override
+                                    public void onFailure(@NonNull Exception e) {
+                                        System.out.println("RES: gaada");
+                                    }
+                                });
 
                                 Toast.makeText(TambahMobil.this, "Berhasil menambahkan mobil", Toast.LENGTH_SHORT).show();
                                 progressDialog.dismiss();
