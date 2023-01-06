@@ -244,22 +244,27 @@ public class TambahMobil extends AppCompatActivity {
                                                         });
                                             } else {
                                                 String[] newRes = result.toString().replace("[", "").replace("]", "").split(",");
-                                                System.out.println(newRes);
-                                                Map<String, Object> doc =  new HashMap<>();
-                                                ArrayList<String> data = new ArrayList<>();
-                                                for(String res: newRes) {
-                                                    data.add(res);
-                                                }
-                                                data.add(value);
-                                                doc.put("tipe", data);
-                                                db.collection("mobil").document(brand)
-                                                        .update("tipe", doc)
-                                                        .addOnSuccessListener(new OnSuccessListener<Void>() {
-                                                            @Override
-                                                            public void onSuccess(Void unused) {
-                                                                System.out.println("SUCCESS UPDATE DATA");
-                                                            }
-                                                        });
+                                                ArrayList<String> arrayList = new ArrayList<>(Arrays.asList(newRes));
+                                                arrayList.add(value);
+                                                DocumentReference doc = db.collection("mobil").document(brand);
+                                                doc.update("tipe", FieldValue.arrayUnion(value));
+                                                System.out.println("SUCCESS UPDATE DATA");
+//                                                System.out.println(newRes);
+//                                                Map<String, Object> doc =  new HashMap<>();
+//                                                ArrayList<String> data = new ArrayList<>();
+//                                                for(String res: newRes) {
+//                                                    data.add(res);
+//                                                }
+//                                                data.add(value);
+//                                                doc.put("tipe", data);
+//                                                db.collection("mobil").document(brand)
+//                                                        .update("tipe", doc)
+//                                                        .addOnSuccessListener(new OnSuccessListener<Void>() {
+//                                                            @Override
+//                                                            public void onSuccess(Void unused) {
+//                                                                System.out.println("SUCCESS UPDATE DATA");
+//                                                            }
+//                                                        });
                                             }
                                         }
                                     }
