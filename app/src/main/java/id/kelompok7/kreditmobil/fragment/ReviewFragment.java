@@ -1,9 +1,12 @@
 package id.kelompok7.kreditmobil.fragment;
 
 import android.app.ProgressDialog;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
@@ -34,6 +37,8 @@ import java.util.List;
 import java.util.Objects;
 import java.util.UUID;
 
+import id.kelompok7.kreditmobil.DetailApproval;
+import id.kelompok7.kreditmobil.ListKPM;
 import id.kelompok7.kreditmobil.R;
 import id.kelompok7.kreditmobil.UserDashboard;
 import id.kelompok7.kreditmobil.config.DBHelper;

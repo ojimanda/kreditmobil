@@ -287,18 +287,48 @@ public class PengajuanKredit extends AppCompatActivity {
                                                                        .addOnCompleteListener(new OnCompleteListener<DocumentReference>() {
                                                                            @Override
                                                                            public void onComplete(@NonNull Task<DocumentReference> task) {
-                                                                               Toast.makeText(PengajuanKredit.this, "Data sudah diajukan", Toast.LENGTH_SHORT).show();
-                                                                               Toast.makeText(PengajuanKredit.this, "Mohon ditunggu untuk diproses", Toast.LENGTH_SHORT).show();
-                                                                               Intent intent1 = new Intent(PengajuanKredit.this, UserDashboard.class);
+                                                                               AlertDialog.Builder builder = new AlertDialog.Builder(PengajuanKredit.this);
+                                                                               builder.setTitle("Data Status");
+                                                                               builder.setMessage("Data sudah diajukan /n Mohon ditunggu untuk di proses");
+                                                                               builder.setCancelable(true);
+                                                                               builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                                                                                   @Override
+                                                                                   public void onClick(DialogInterface dialog, int which) {
+                                                                                       startActivity(new Intent(PengajuanKredit.this, UserDashboard.class));
+                                                                                       finish();
+                                                                                   }
+                                                                               });
+                                                                               AlertDialog alert = builder.create();
+                                                                               alert.show();
                                                                            }
                                                                        }).addOnFailureListener(new OnFailureListener() {
                                                                            @Override
                                                                            public void onFailure(@NonNull Exception e) {
-                                                                               Toast.makeText(PengajuanKredit.this, "Data gagal diajukan", Toast.LENGTH_SHORT).show();
+                                                                               AlertDialog.Builder builder = new AlertDialog.Builder(PengajuanKredit.this);
+                                                                               builder.setTitle("Data Status");
+                                                                               builder.setMessage("Data gagal diajukan");
+                                                                               builder.setCancelable(true);
+                                                                               builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                                                                                   @Override
+                                                                                   public void onClick(DialogInterface dialog, int which) {
+                                                                                   }
+                                                                               });
+                                                                               AlertDialog alert = builder.create();
+                                                                               alert.show();
                                                                            }
                                                                        });
                                                            } else {
-                                                               Toast.makeText(PengajuanKredit.this, "Anda sudah pernah mengajukan KPM", Toast.LENGTH_SHORT).show();
+                                                               AlertDialog.Builder builder = new AlertDialog.Builder(PengajuanKredit.this);
+                                                               builder.setTitle("Data Status");
+                                                               builder.setMessage("Anda sudah pernah mengajukan KPM");
+                                                               builder.setCancelable(true);
+                                                               builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                                                                   @Override
+                                                                   public void onClick(DialogInterface dialog, int which) {
+                                                                   }
+                                                               });
+                                                               AlertDialog alert = builder.create();
+                                                               alert.show();
                                                            }
                                                        }
                                                    }
@@ -311,13 +341,34 @@ public class PengajuanKredit extends AppCompatActivity {
                                                                .addOnCompleteListener(new OnCompleteListener<DocumentReference>() {
                                                                    @Override
                                                                    public void onComplete(@NonNull Task<DocumentReference> task) {
-                                                                       Toast.makeText(PengajuanKredit.this, "Data sudah diajukan", Toast.LENGTH_SHORT).show();
-                                                                       Toast.makeText(PengajuanKredit.this, "Mohon ditunggu untuk diproses", Toast.LENGTH_SHORT).show();
+                                                                       AlertDialog.Builder builder = new AlertDialog.Builder(PengajuanKredit.this);
+                                                                       builder.setTitle("Data Status");
+                                                                       builder.setMessage("Data sudah diajukan /n Mohon ditunggu untuk di proses");
+                                                                       builder.setCancelable(true);
+                                                                       builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                                                                           @Override
+                                                                           public void onClick(DialogInterface dialog, int which) {
+                                                                               startActivity(new Intent(PengajuanKredit.this, UserDashboard.class));
+                                                                               finish();
+                                                                           }
+                                                                       });
+                                                                       AlertDialog alert = builder.create();
+                                                                       alert.show();
                                                                    }
                                                                }).addOnFailureListener(new OnFailureListener() {
                                                                    @Override
                                                                    public void onFailure(@NonNull Exception e) {
-                                                                       Toast.makeText(PengajuanKredit.this, "Data gagal diajukan", Toast.LENGTH_SHORT).show();
+                                                                       AlertDialog.Builder builder = new AlertDialog.Builder(PengajuanKredit.this);
+                                                                       builder.setTitle("Data Status");
+                                                                       builder.setMessage("Data gagal diajukan");
+                                                                       builder.setCancelable(true);
+                                                                       builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                                                                           @Override
+                                                                           public void onClick(DialogInterface dialog, int which) {
+                                                                           }
+                                                                       });
+                                                                       AlertDialog alert = builder.create();
+                                                                       alert.show();
                                                                    }
                                                                });
                                                    }
@@ -326,7 +377,17 @@ public class PengajuanKredit extends AppCompatActivity {
                                }).addOnFailureListener(new OnFailureListener() {
                                    @Override
                                    public void onFailure(@NonNull Exception e) {
-                                       Toast.makeText(PengajuanKredit.this, "Mohon Registrasi terlebih dahulu", Toast.LENGTH_SHORT).show();
+                                       AlertDialog.Builder builder = new AlertDialog.Builder(PengajuanKredit.this);
+                                       builder.setTitle("Fail");
+                                       builder.setMessage("Mohon Registrasi terlebih dahulu");
+                                       builder.setCancelable(true);
+                                       builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                                           @Override
+                                           public void onClick(DialogInterface dialog, int which) {
+                                           }
+                                       });
+                                       AlertDialog alert = builder.create();
+                                       alert.show();
                                    }
                                });
                     }

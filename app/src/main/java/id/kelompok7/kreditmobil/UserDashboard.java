@@ -135,7 +135,13 @@ public class UserDashboard extends AppCompatActivity {
                 builder.setTitle("Log Out");
                 builder.setMessage("Are you sure?");
                 builder.setCancelable(true);
-                builder.setNeutralButton("Yes", new DialogInterface.OnClickListener() {
+                builder.setNeutralButton("No", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                    }
+                });
+                builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         drawerLayout.closeDrawer(GravityCompat.START);
@@ -143,13 +149,8 @@ public class UserDashboard extends AppCompatActivity {
                         finish();
                     }
                 });
-                builder.setPositiveButton("No", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                    }
-                });
-                AlertDialog alertDialog1 = builder.create();
-                alertDialog1.show();
+                AlertDialog alert = builder.create();
+                alert.show();
             }
         });
 

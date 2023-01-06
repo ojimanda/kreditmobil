@@ -1,9 +1,11 @@
 package id.kelompok7.kreditmobil;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.ProgressDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -98,17 +100,36 @@ public class Register extends AppCompatActivity {
                 .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
                     @Override
                     public void onSuccess(DocumentReference documentReference) {
-                        Toast.makeText(Register.this, "Berhasil mendaftarkan akun", Toast.LENGTH_SHORT).show();
                         progressDialog.dismiss();
-                        startActivity(new Intent(Register.this, Login.class));
-                        finish();
+                        AlertDialog.Builder builder = new AlertDialog.Builder(Register.this);
+                        builder.setTitle("Success");
+                        builder.setMessage("Berhasil mendaftarkan akun");
+                        builder.setCancelable(true);
+                        builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                startActivity(new Intent(Register.this, Login.class));
+                                finish();
+                            }
+                        });
+                        AlertDialog alert = builder.create();
+                        alert.show();
                     }
                 }).addOnFailureListener(new OnFailureListener() {
                     @Override
                     public void onFailure(@NonNull Exception e) {
-                        Toast.makeText(Register.this, "Gagal mendaftarkan akun", Toast.LENGTH_SHORT).show();
-                        System.out.println(e.getLocalizedMessage());
                         progressDialog.dismiss();
+                        AlertDialog.Builder builder = new AlertDialog.Builder(Register.this);
+                        builder.setTitle("Fail");
+                        builder.setMessage("Gagal mendaftarkan akun");
+                        builder.setCancelable(true);
+                        builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                            }
+                        });
+                        AlertDialog alert = builder.create();
+                        alert.show();
                     }
                 });
     }

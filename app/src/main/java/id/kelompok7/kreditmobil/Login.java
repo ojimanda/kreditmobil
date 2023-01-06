@@ -2,9 +2,11 @@ package id.kelompok7.kreditmobil;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.ProgressDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -29,6 +31,7 @@ import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.google.firebase.firestore.SnapshotMetadata;
+import com.google.firebase.firestore.auth.User;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -92,9 +95,9 @@ public class Login extends AppCompatActivity {
                             .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                                 @Override
                                 public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                                    if(task.isSuccessful()) {
+                                    if (task.isSuccessful()) {
                                         result = task.getResult();
-                                        if(result.getDocuments().size() == 0) {
+                                        if (result.getDocuments().size() == 0) {
                                             Toast.makeText(Login.this, "Wrong username/password", Toast.LENGTH_SHORT).show();
                                             progressDialog.dismiss();
                                         } else {
@@ -102,22 +105,44 @@ public class Login extends AppCompatActivity {
                                             String uid = document.getId();
                                             String username = document.get("nama").toString();
                                             String role = document.get("role").toString();
-                                            if(role.equals("admin")){
-                                                Toast.makeText(Login.this, "Login berhasil", Toast.LENGTH_SHORT).show();
+                                            if (role.equals("admin")) {
                                                 progressDialog.dismiss();
-                                                Intent intent = new Intent(Login.this, AdminDashboard.class);
-                                                intent.putExtra("username",username);
-                                                startActivity(intent);
-                                                finish();
-                                            }
-                                            else{
+                                                AlertDialog.Builder builder = new AlertDialog.Builder(Login.this);
+                                                builder.setTitle("Login Success");
+                                                builder.setMessage("Hello " + username);
+                                                builder.setCancelable(true);
+                                                builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                                                    @Override
+                                                    public void onClick(DialogInterface dialog, int which) {
+                                                        Intent intent = new Intent(Login.this, AdminDashboard.class);
+                                                        intent.putExtra("username", username);
+                                                        startActivity(intent);
+                                                        finish();
+                                                    }
+                                                });
+                                                AlertDialog alert = builder.create();
+                                                alert.show();
 
-                                                Toast.makeText(Login.this, "Login berhasil", Toast.LENGTH_SHORT).show();
+
+                                            } else {
+
                                                 progressDialog.dismiss();
-                                                Intent intent1 = new Intent(Login.this, UserDashboard.class);
-                                                intent1.putExtra("uid", uid);
-                                                startActivity(intent1);
-                                                finish();
+                                                AlertDialog.Builder builder1 = new AlertDialog.Builder(Login.this);
+                                                builder1.setTitle("Login Success");
+                                                builder1.setMessage("Hello " + username);
+                                                builder1.setCancelable(true);
+                                                builder1.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                                                    @Override
+                                                    public void onClick(DialogInterface dialog, int which) {
+                                                        Intent intent = new Intent(Login.this, UserDashboard.class);
+                                                        intent.putExtra("uid", uid);
+                                                        startActivity(intent);
+                                                        finish();
+                                                    }
+
+                                                });
+                                                AlertDialog alert = builder1.create();
+                                                alert.show();
                                             }
                                         }
                                     }
@@ -126,10 +151,19 @@ public class Login extends AppCompatActivity {
                                 @Override
                                 public void onFailure(@NonNull Exception e) {
                                     progressDialog.dismiss();
-                                    Toast.makeText(Login.this, "Gagal login", Toast.LENGTH_SHORT).show();
-                                    Toast.makeText(Login.this, "Email/Password anda salah", Toast.LENGTH_SHORT).show();
-                                    txEmail.setText("");
-                                    txPassword.setText("");
+                                    AlertDialog.Builder builder2 = new AlertDialog.Builder(Login.this);
+                                    builder2.setTitle("Login Fail");
+                                    builder2.setMessage("Email/Password anda salah");
+                                    builder2.setCancelable(true);
+                                    builder2.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                                        @Override
+                                        public void onClick(DialogInterface dialog, int which) {
+                                            txEmail.setText("");
+                                            txPassword.setText("");
+                                        }
+                                    });
+                                    AlertDialog alert = builder2.create();
+                                    alert.show();
                                 }
                             });
                 }

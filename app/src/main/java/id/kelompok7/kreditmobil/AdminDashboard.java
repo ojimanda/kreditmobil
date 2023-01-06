@@ -1,7 +1,10 @@
 package id.kelompok7.kreditmobil;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.view.GravityCompat;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.media.Image;
 import android.os.Bundle;
@@ -38,7 +41,7 @@ public class AdminDashboard extends AppCompatActivity {
         iv1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(AdminDashboard.this, ListKPM.class));
+                startActivity(new Intent(AdminDashboard.this, ListKPM.class).putExtra("username", username));
                 finish();
 
             }
@@ -47,7 +50,7 @@ public class AdminDashboard extends AppCompatActivity {
         iv2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(AdminDashboard.this, TambahMobil.class));
+                startActivity(new Intent(AdminDashboard.this, TambahMobil.class).putExtra("username", username));
                 finish();
             }
         });
@@ -55,8 +58,26 @@ public class AdminDashboard extends AppCompatActivity {
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(AdminDashboard.this, Login.class));
-                finish();
+                AlertDialog.Builder builder = new AlertDialog.Builder(AdminDashboard.this);
+                builder.setTitle("Log Out");
+                builder.setMessage("Are you sure?");
+                builder.setCancelable(true);
+                builder.setNeutralButton("No", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                    }
+                });
+                builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        startActivity(new Intent(AdminDashboard.this, Login.class));
+                        finish();
+                    }
+                });
+                AlertDialog alertDialog1 = builder.create();
+                alertDialog1.show();
+
             }
         });
 
