@@ -1,10 +1,12 @@
 package id.kelompok7.kreditmobil;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -61,7 +63,17 @@ public class HistoryPengajuan extends AppCompatActivity {
                         if(task.isSuccessful()) {
                             System.out.println(task.getResult().getDocuments().size());
                             if(task.getResult().getDocuments().size() == 0) {
-                                Toast.makeText(HistoryPengajuan.this, "Anda belum mengajukan KPM", Toast.LENGTH_SHORT).show();
+                                AlertDialog.Builder builder = new AlertDialog.Builder(HistoryPengajuan.this);
+                                builder.setTitle("Data Kosong");
+                                builder.setMessage("Anda belum mengajukan KPM");
+                                builder.setCancelable(true);
+                                builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialog, int which) {
+                                    }
+                                });
+                                AlertDialog alert = builder.create();
+                                alert.show();
                             } else {
                                 element = new ArrayList<>();
                                 result = task.getResult().getDocuments().get(0);
@@ -90,7 +102,17 @@ public class HistoryPengajuan extends AppCompatActivity {
                 }).addOnFailureListener(new OnFailureListener() {
                     @Override
                     public void onFailure(@NonNull Exception e) {
-                        Toast.makeText(HistoryPengajuan.this, "Gagal menampilkan data", Toast.LENGTH_SHORT).show();
+                        AlertDialog.Builder builder = new AlertDialog.Builder(HistoryPengajuan.this);
+                        builder.setTitle("Fail");
+                        builder.setMessage("Gagal menampilkan data");
+                        builder.setCancelable(true);
+                        builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                            }
+                        });
+                        AlertDialog alert = builder.create();
+                        alert.show();
                     }
                 });
 

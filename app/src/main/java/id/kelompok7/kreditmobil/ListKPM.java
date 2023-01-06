@@ -29,6 +29,7 @@ public class ListKPM extends AppCompatActivity {
     String nama, merk, id;
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
     private QuerySnapshot result;
+    String username;
     private List<ModelApprovalAdmin> element;
     ImageButton backBtn;
 
@@ -36,12 +37,14 @@ public class ListKPM extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_approval);
+        username = getIntent().getStringExtra("username");
         backBtn = (ImageButton) findViewById(R.id.backButtonListApproval);
 
         backBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(ListKPM.this, AdminDashboard.class);
+                intent.putExtra("username",username);
                 startActivity(intent);
                 finish();
             }
