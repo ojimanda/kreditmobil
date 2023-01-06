@@ -188,7 +188,6 @@ public class TambahMobil extends AppCompatActivity {
                             public void onSuccess(Void unused) {
                                 db.collection("listMobil").document(merk).set(listMobil);
 
-<<<<<<< Updated upstream
 //                                db.collection("mobil").document(brand)
 //                                        .get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
 //                                            @Override
@@ -231,11 +230,11 @@ public class TambahMobil extends AppCompatActivity {
                                 db.collection("mobil").document(brand).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
                                     @Override
                                     public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-                                        if(task.isSuccessful()) {
+                                        if (task.isSuccessful()) {
                                             Object result = task.getResult().get("tipe");
                                             System.out.println(result);
-                                            if(result == null) {
-                                                Map<String, Object> doc =  new HashMap<>();
+                                            if (result == null) {
+                                                Map<String, Object> doc = new HashMap<>();
                                                 ArrayList<String> arrayList = new ArrayList<>();
                                                 arrayList.add(value);
                                                 doc.put("tipe", arrayList);
@@ -244,15 +243,27 @@ public class TambahMobil extends AppCompatActivity {
                                                         .addOnSuccessListener(new OnSuccessListener<Void>() {
                                                             @Override
                                                             public void onSuccess(Void unused) {
-                                                                System.out.println("SUCCESS ADD FIELD");
+                                                                AlertDialog.Builder builder = new AlertDialog.Builder(TambahMobil.this);
+                                                                builder.setTitle("Success");
+                                                                builder.setMessage("Berhasil menambahkan mobil");
+                                                                builder.setCancelable(true);
+                                                                builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                                                                    @Override
+                                                                    public void onClick(DialogInterface dialog, int which) {
+                                                                        startActivity(new Intent(TambahMobil.this, AdminDashboard.class).putExtra("username", username));
+                                                                        finish();
+                                                                    }
+                                                                });
+                                                                AlertDialog alert = builder.create();
+                                                                alert.show();
                                                             }
                                                         });
                                             } else {
                                                 String[] newRes = result.toString().replace("[", "").replace("]", "").split(",");
                                                 System.out.println(newRes);
-                                                Map<String, Object> doc =  new HashMap<>();
+                                                Map<String, Object> doc = new HashMap<>();
                                                 ArrayList<String> data = new ArrayList<>();
-                                                for(String res: newRes) {
+                                                for (String res : newRes) {
                                                     data.add(res);
                                                 }
                                                 data.add(value);
@@ -262,7 +273,19 @@ public class TambahMobil extends AppCompatActivity {
                                                         .addOnSuccessListener(new OnSuccessListener<Void>() {
                                                             @Override
                                                             public void onSuccess(Void unused) {
-                                                                System.out.println("SUCCESS UPDATE DATA");
+                                                                AlertDialog.Builder builder = new AlertDialog.Builder(TambahMobil.this);
+                                                                builder.setTitle("Success");
+                                                                builder.setMessage("Berhasil Update mobil");
+                                                                builder.setCancelable(true);
+                                                                builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                                                                    @Override
+                                                                    public void onClick(DialogInterface dialog, int which) {
+                                                                        startActivity(new Intent(TambahMobil.this, AdminDashboard.class).putExtra("username", username));
+                                                                        finish();
+                                                                    }
+                                                                });
+                                                                AlertDialog alert = builder.create();
+                                                                alert.show();
                                                             }
                                                         });
                                             }
@@ -271,30 +294,38 @@ public class TambahMobil extends AppCompatActivity {
                                 }).addOnFailureListener(new OnFailureListener() {
                                     @Override
                                     public void onFailure(@NonNull Exception e) {
-                                        System.out.println("RES: gaada");
+                                        AlertDialog.Builder builder = new AlertDialog.Builder(TambahMobil.this);
+                                        builder.setTitle("Fail");
+                                        builder.setMessage("Gagal menambahkan mobil");
+                                        builder.setCancelable(true);
+                                        builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                                            @Override
+                                            public void onClick(DialogInterface dialog, int which) {
+                                            }
+                                        });
+                                        AlertDialog alert = builder.create();
+                                        alert.show();
                                     }
                                 });
 
-                                Toast.makeText(TambahMobil.this, "Berhasil menambahkan mobil", Toast.LENGTH_SHORT).show();
-=======
                                 db.collection("mobil").document(brand)
                                         .get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
                                             @Override
                                             public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-                                                if(task.isSuccessful()) {
-                                                    if(task.getResult().get("tipe") != null && task.getResult().exists()) {
+                                                if (task.isSuccessful()) {
+                                                    if (task.getResult().get("tipe") != null && task.getResult().exists()) {
                                                         db.collection("mobil").document(brand)
                                                                 .get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
                                                                     @Override
                                                                     public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-                                                Object res = task.getResult().get("tipe");
-                                                assert res != null;
-                                                String[] data = res.toString().replace("[", "").replace("]", "").split(",");
-                                                ArrayList<String> arrayList = new ArrayList<>(Arrays.asList(data));
-                                                if(!arrayList.contains(value)){
-                                                    DocumentReference doc = db.collection("mobil").document(brand);
-                                                    doc.update("tipe", FieldValue.arrayUnion(value));
-                                                }
+                                                                        Object res = task.getResult().get("tipe");
+                                                                        assert res != null;
+                                                                        String[] data = res.toString().replace("[", "").replace("]", "").split(",");
+                                                                        ArrayList<String> arrayList = new ArrayList<>(Arrays.asList(data));
+                                                                        if (!arrayList.contains(value)) {
+                                                                            DocumentReference doc = db.collection("mobil").document(brand);
+                                                                            doc.update("tipe", FieldValue.arrayUnion(value));
+                                                                        }
                                                                     }
                                                                 });
                                                     } else {
@@ -309,41 +340,8 @@ public class TambahMobil extends AppCompatActivity {
 
                                             }
                                         });
->>>>>>> Stashed changes
-                                progressDialog.dismiss();
-                                AlertDialog.Builder builder = new AlertDialog.Builder(TambahMobil.this);
-                                builder.setTitle("Success");
-                                builder.setMessage("Berhasil menambahkan mobil");
-                                builder.setCancelable(true);
-                                builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
-                                    @Override
-                                    public void onClick(DialogInterface dialog, int which) {
-                                        startActivity(new Intent(TambahMobil.this, AdminDashboard.class).putExtra("username", username));
-                                        finish();
-                                    }
-                                });
-                                AlertDialog alert = builder.create();
-                                alert.show();
-                            }
-
-                        })
-                .addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        progressDialog.dismiss();
-                        AlertDialog.Builder builder = new AlertDialog.Builder(TambahMobil.this);
-                        builder.setTitle("Fail");
-                        builder.setMessage("Gagal menambahkan mobil");
-                        builder.setCancelable(true);
-                        builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
                             }
                         });
-                        AlertDialog alert = builder.create();
-                        alert.show();
-                    }
-                });
 
     }
 }
