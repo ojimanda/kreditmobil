@@ -59,7 +59,7 @@ public class Login extends AppCompatActivity {
         txRegister = findViewById(R.id.txRegister);
         
         progressDialog = new ProgressDialog(this);
-        progressDialog.setTitle("Mohon menunggu");
+        progressDialog.setTitle("Mohon menunggu...");
         progressDialog.setMessage("Memeriksa data");
 
         txRegister.setOnClickListener(new View.OnClickListener() {
